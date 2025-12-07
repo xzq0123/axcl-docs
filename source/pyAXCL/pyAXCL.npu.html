@@ -1,0 +1,1403 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>12.4. axcl.npu &#8212; AXCL V3.6.5 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../_static/documentation_options.js?v=6e648b6a"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'pyAXCL/pyAXCL.npu';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="12.5. axcl.vdec" href="pyAXCL.vdec.html" />
+    <link rel="prev" title="12.3. axcl.pool" href="pyAXCL.pool.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">AXCL V3.6.5 documentation</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">目录</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../doc_update_info.html">1. 版本信息</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../doc_introduction.html">2. 简介</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../doc_guide_setup.html">3. 驱动安装</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../doc_guide_axcl_smi.html">4. AXCL-SMI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../doc_guide_quick_start.html">5. 快速上手</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../doc_guide_npu_samples.html">6. NPU 示例</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../doc_guide_npu_benchmark.html">7. NPU Benchmark</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../doc_guide_samples.html">8. SDK Samples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../doc_guide_axcl_api.html">9. SDK API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../doc_guide_compile.html">10. SDK 编译</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../doc_guide_ffmpeg.html">11. FFmpeg</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="pyAXCL.html">12. pyAXCL</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="pyAXCL.rt.html">12.1. axcl.rt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pyAXCL.sys.html">12.2. axcl.sys</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pyAXCL.pool.html">12.3. axcl.pool</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">12.4. axcl.npu</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pyAXCL.vdec.html">12.5. axcl.vdec</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pyAXCL.venc.html">12.6. axcl.venc</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pyAXCL.ivps.html">12.7. axcl.ivps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pyAXCL.dmadim.html">12.8. axcl.dmadim</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pyAXCL.ive.html">12.9. axcl.ive</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pyAXCL.utils.html">12.10. axcl.utils</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../doc_guide_faq.html">13. 常见问题</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/pyAXCL/pyAXCL.npu.rst" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.rst</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>axcl.npu</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-axcl.npu.axcl_npu">12.4.1. api</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.npu.axcl_npu.get_version"><code class="docutils literal notranslate"><span class="pre">get_version()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.npu.axcl_npu.npu_reset"><code class="docutils literal notranslate"><span class="pre">npu_reset()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.npu.axcl_npu.init"><code class="docutils literal notranslate"><span class="pre">init()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.npu.axcl_npu.get_npu_attr"><code class="docutils literal notranslate"><span class="pre">get_npu_attr()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.npu.axcl_npu.deinit"><code class="docutils literal notranslate"><span class="pre">deinit()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.npu.axcl_npu.get_model_type"><code class="docutils literal notranslate"><span class="pre">get_model_type()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.npu.axcl_npu.create_handle"><code class="docutils literal notranslate"><span class="pre">create_handle()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.npu.axcl_npu.create_handle_v2"><code class="docutils literal notranslate"><span class="pre">create_handle_v2()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.npu.axcl_npu.destroy_handle"><code class="docutils literal notranslate"><span class="pre">destroy_handle()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.npu.axcl_npu.get_handle_model_type"><code class="docutils literal notranslate"><span class="pre">get_handle_model_type()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.npu.axcl_npu.get_io_info"><code class="docutils literal notranslate"><span class="pre">get_io_info()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.npu.axcl_npu.get_group_io_info_count"><code class="docutils literal notranslate"><span class="pre">get_group_io_info_count()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.npu.axcl_npu.get_group_io_info"><code class="docutils literal notranslate"><span class="pre">get_group_io_info()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.npu.axcl_npu.create_context"><code class="docutils literal notranslate"><span class="pre">create_context()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.npu.axcl_npu.create_context_v2"><code class="docutils literal notranslate"><span class="pre">create_context_v2()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.npu.axcl_npu.run_sync"><code class="docutils literal notranslate"><span class="pre">run_sync()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.npu.axcl_npu.run_sync_v2"><code class="docutils literal notranslate"><span class="pre">run_sync_v2()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.npu.axcl_npu.run_group_io_sync"><code class="docutils literal notranslate"><span class="pre">run_group_io_sync()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.npu.axcl_npu.get_affinity"><code class="docutils literal notranslate"><span class="pre">get_affinity()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.npu.axcl_npu.set_affinity"><code class="docutils literal notranslate"><span class="pre">set_affinity()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.npu.axcl_npu.get_cmm_usage"><code class="docutils literal notranslate"><span class="pre">get_cmm_usage()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.npu.axcl_npu.get_model_tools_version"><code class="docutils literal notranslate"><span class="pre">get_model_tools_version()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-axcl.npu.axcl_npu_type">12.4.2. types</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.npu.axcl_npu_type.AX_ENGINE_TENSOR_LAYOUT_T"><code class="docutils literal notranslate"><span class="pre">AX_ENGINE_TENSOR_LAYOUT_T</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.npu.axcl_npu_type.AX_ENGINE_MEMORY_TYPE_T"><code class="docutils literal notranslate"><span class="pre">AX_ENGINE_MEMORY_TYPE_T</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.npu.axcl_npu_type.AX_ENGINE_DATA_TYPE_T"><code class="docutils literal notranslate"><span class="pre">AX_ENGINE_DATA_TYPE_T</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.npu.axcl_npu_type.AX_ENGINE_COLOR_SPACE_T"><code class="docutils literal notranslate"><span class="pre">AX_ENGINE_COLOR_SPACE_T</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.npu.axcl_npu_type.AX_ENGINE_NPU_MODE_T"><code class="docutils literal notranslate"><span class="pre">AX_ENGINE_NPU_MODE_T</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.npu.axcl_npu_type.AX_ENGINE_MODEL_TYPE_T"><code class="docutils literal notranslate"><span class="pre">AX_ENGINE_MODEL_TYPE_T</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.npu.axcl_npu_type.AX_ENGINE_NPU_ATTR_T"><code class="docutils literal notranslate"><span class="pre">AX_ENGINE_NPU_ATTR_T</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.npu.axcl_npu_type.AX_ENGINE_IOMETA_EX_T"><code class="docutils literal notranslate"><span class="pre">AX_ENGINE_IOMETA_EX_T</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.npu.axcl_npu_type.AX_ENGINE_IOMETA_T"><code class="docutils literal notranslate"><span class="pre">AX_ENGINE_IOMETA_T</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.npu.axcl_npu_type.AX_ENGINE_IO_INFO_T"><code class="docutils literal notranslate"><span class="pre">AX_ENGINE_IO_INFO_T</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.npu.axcl_npu_type.AX_ENGINE_IO_BUFFER_T"><code class="docutils literal notranslate"><span class="pre">AX_ENGINE_IO_BUFFER_T</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.npu.axcl_npu_type.AX_ENGINE_IO_SETTING_T"><code class="docutils literal notranslate"><span class="pre">AX_ENGINE_IO_SETTING_T</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.npu.axcl_npu_type.AX_ENGINE_IO_T"><code class="docutils literal notranslate"><span class="pre">AX_ENGINE_IO_T</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.npu.axcl_npu_type.AX_ENGINE_HANDLE_EXTRA_T"><code class="docutils literal notranslate"><span class="pre">AX_ENGINE_HANDLE_EXTRA_T</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.npu.axcl_npu_type.AX_ENGINE_CMM_INFO"><code class="docutils literal notranslate"><span class="pre">AX_ENGINE_CMM_INFO</span></code></a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="axcl-npu">
+<h1><span class="section-number">12.4. </span>axcl.npu<a class="headerlink" href="#axcl-npu" title="Link to this heading">#</a></h1>
+<section id="module-axcl.npu.axcl_npu">
+<span id="api"></span><h2><span class="section-number">12.4.1. </span>api<a class="headerlink" href="#module-axcl.npu.axcl_npu" title="Link to this heading">#</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="axcl.npu.axcl_npu.get_version">
+<span class="sig-name descname"><span class="pre">get_version</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#axcl.npu.axcl_npu.get_version" title="Link to this definition">#</a></dt>
+<dd><p>Get NPU engine lib version</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Language</strong></p></th>
+<th class="head"><p><strong>Function Prototype</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>C</strong></p></td>
+<td><p><cite>const AX_CHAR* AX_ENGINE_GetVersion(AX_VOID);</cite></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>python</strong></p></td>
+<td><p><cite>version = axcl.npu.get_version()</cite></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>version</strong> (<em>str</em>) - the version string of the npu lib</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="axcl.npu.axcl_npu.npu_reset">
+<span class="sig-name descname"><span class="pre">npu_reset</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#axcl.npu.axcl_npu.npu_reset" title="Link to this definition">#</a></dt>
+<dd><p>Reset the NPU engine</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Language</strong></p></th>
+<th class="head"><p><strong>Function Prototype</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>C</strong></p></td>
+<td><p><cite>AX_VOID AX_ENGINE_NPUReset(AX_VOID);</cite></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>python</strong></p></td>
+<td><p><cite>axcl.npu.npu_reset()</cite></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="axcl.npu.axcl_npu.init">
+<span class="sig-name descname"><span class="pre">init</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">npu_attr</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="headerlink" href="#axcl.npu.axcl_npu.init" title="Link to this definition">#</a></dt>
+<dd><p>Initialize the NPU engine with attributes.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Language</strong></p></th>
+<th class="head"><p><strong>Function Prototype</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>C</strong></p></td>
+<td><p><cite>AX_S32 AX_ENGINE_Init(AX_ENGINE_NPU_ATTR_T* pNpuAttr);</cite></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>python</strong></p></td>
+<td><p><cite>ret = axcl.npu.init(npu_attr)</cite></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>npu_attr</strong> (<em>dict</em>) – NPU attributes to initialize, see <a class="reference internal" href="#axcl.npu.axcl_npu_type.AX_ENGINE_NPU_ATTR_T" title="axcl.npu.axcl_npu_type.AX_ENGINE_NPU_ATTR_T"><code class="xref py py-class docutils literal notranslate"><span class="pre">axcl.npu.axcl_npu_type.AX_ENGINE_NPU_ATTR_T</span></code></a></p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>ret</strong> (<em>int</em>) - 0 indicates success, otherwise failure</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="axcl.npu.axcl_npu.get_npu_attr">
+<span class="sig-name descname"><span class="pre">get_npu_attr</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">dict</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#axcl.npu.axcl_npu.get_npu_attr" title="Link to this definition">#</a></dt>
+<dd><p>Retrieve the attributes of the NPU.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Language</strong></p></th>
+<th class="head"><p><strong>Function Prototype</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>C</strong></p></td>
+<td><p><cite>AX_S32 AX_ENGINE_GetVNPUAttr(AX_ENGINE_NPU_ATTR_T* pNpuAttr);</cite></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>python</strong></p></td>
+<td><p><cite>npu_attr, ret = axcl.npu.get_npu_attr()</cite></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>npu_attr</strong> (<em>dict</em>) - attributes(see <a class="reference internal" href="#axcl.npu.axcl_npu_type.AX_ENGINE_NPU_ATTR_T" title="axcl.npu.axcl_npu_type.AX_ENGINE_NPU_ATTR_T"><code class="xref py py-class docutils literal notranslate"><span class="pre">axcl.npu.axcl_npu_type.AX_ENGINE_NPU_ATTR_T</span></code></a>) of the NPU, <strong>ret</strong> (<em>int</em>) - result code</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="axcl.npu.axcl_npu.deinit">
+<span class="sig-name descname"><span class="pre">deinit</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="headerlink" href="#axcl.npu.axcl_npu.deinit" title="Link to this definition">#</a></dt>
+<dd><p>Deinitialize the NPU engine.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Language</strong></p></th>
+<th class="head"><p><strong>Function Prototype</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>C</strong></p></td>
+<td><p><cite>AX_S32 AX_ENGINE_Deinit(AX_VOID);</cite></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>python</strong></p></td>
+<td><p><cite>ret = axcl.npu.deinit()</cite></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>ret</strong> (<em>int</em>) - 0 indicates success, otherwise failure</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="axcl.npu.axcl_npu.get_model_type">
+<span class="sig-name descname"><span class="pre">get_model_type</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ptr</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#axcl.npu.axcl_npu.get_model_type" title="Link to this definition">#</a></dt>
+<dd><p>Get the model type from the provided data.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Language</strong></p></th>
+<th class="head"><p><strong>Function Prototype</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>C</strong></p></td>
+<td><p><cite>AX_S32 AX_ENGINE_GetModelType(const AX_VOID* pData, AX_U32 nDataSize, AX_ENGINE_MODEL_TYPE_T* pModelType);</cite></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>python</strong></p></td>
+<td><p><cite>model_type, ret = axcl.npu.get_model_type(ptr, size)</cite></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ptr</strong> (<em>int</em>) – Pointer to the data</p></li>
+<li><p><strong>size</strong> (<em>int</em>) – Size of the data</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>model_type</strong> (<em>int</em>) - the type (see <a class="reference internal" href="#axcl.npu.axcl_npu_type.AX_ENGINE_MODEL_TYPE_T" title="axcl.npu.axcl_npu_type.AX_ENGINE_MODEL_TYPE_T"><code class="xref py py-class docutils literal notranslate"><span class="pre">axcl.npu.axcl_npu_type.AX_ENGINE_MODEL_TYPE_T</span></code></a>) of the model, <strong>ret</strong> (<em>int</em>) - result code</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="axcl.npu.axcl_npu.create_handle">
+<span class="sig-name descname"><span class="pre">create_handle</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ptr</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#axcl.npu.axcl_npu.create_handle" title="Link to this definition">#</a></dt>
+<dd><p>Create a handle for the model.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Language</strong></p></th>
+<th class="head"><p><strong>Function Prototype</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>C</strong></p></td>
+<td><p><cite>AX_S32 AX_ENGINE_CreateHandle(AX_ENGINE_HANDLE* pHandle, const AX_VOID* pData, AX_U32 nDataSize);</cite></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>python</strong></p></td>
+<td><p><cite>handle, ret = axcl.npu.create_handle(ptr, size)</cite></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ptr</strong> (<em>int</em>) – Pointer to the data</p></li>
+<li><p><strong>size</strong> (<em>int</em>) – Size of the data</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>handle</strong> (<em>int</em>) - the created handle, <strong>ret</strong> (<em>int</em>) - result code</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="axcl.npu.axcl_npu.create_handle_v2">
+<span class="sig-name descname"><span class="pre">create_handle_v2</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ptr</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extra</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#axcl.npu.axcl_npu.create_handle_v2" title="Link to this definition">#</a></dt>
+<dd><p>Create a handle for the model with additional parameters.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Language</strong></p></th>
+<th class="head"><p><strong>Function Prototype</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>C</strong></p></td>
+<td><p><cite>AX_S32 AX_ENGINE_CreateHandleV2(AX_ENGINE_HANDLE* pHandle, const AX_VOID* pData, AX_U32 nDataSize, AX_ENGINE_HANDLE_EXTRA_T* pExtra);</cite></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>python</strong></p></td>
+<td><p><cite>handle, ret = axcl.npu.create_handle_v2(ptr, size, extra)</cite></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ptr</strong> (<em>int</em>) – Pointer to the data</p></li>
+<li><p><strong>size</strong> (<em>int</em>) – Size of the data</p></li>
+<li><p><strong>extra</strong> (<em>dict</em>) – Additional parameters for handle creation, see <a class="reference internal" href="#axcl.npu.axcl_npu_type.AX_ENGINE_HANDLE_EXTRA_T" title="axcl.npu.axcl_npu_type.AX_ENGINE_HANDLE_EXTRA_T"><code class="xref py py-class docutils literal notranslate"><span class="pre">axcl.npu.axcl_npu_type.AX_ENGINE_HANDLE_EXTRA_T</span></code></a></p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>handle</strong> (<em>int</em>) - the created handle, <strong>ret</strong> (<em>int</em>) - result code</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="axcl.npu.axcl_npu.destroy_handle">
+<span class="sig-name descname"><span class="pre">destroy_handle</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">handle</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="headerlink" href="#axcl.npu.axcl_npu.destroy_handle" title="Link to this definition">#</a></dt>
+<dd><p>Destroy the specified handle.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Language</strong></p></th>
+<th class="head"><p><strong>Function Prototype</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>C</strong></p></td>
+<td><p><cite>AX_S32 AX_ENGINE_DestroyHandle(AX_ENGINE_HANDLE nHandle);</cite></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>python</strong></p></td>
+<td><p><cite>ret = axcl.npu.destroy_handle(handle)</cite></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>handle</strong> (<em>int</em>) – The handle to be destroyed</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>ret</strong> (<em>int</em>) - 0 indicates success, otherwise failure</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="axcl.npu.axcl_npu.get_handle_model_type">
+<span class="sig-name descname"><span class="pre">get_handle_model_type</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">handle</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#axcl.npu.axcl_npu.get_handle_model_type" title="Link to this definition">#</a></dt>
+<dd><p>Get the model type associated with the specified handle.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Language</strong></p></th>
+<th class="head"><p><strong>Function Prototype</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>C</strong></p></td>
+<td><p><cite>AX_S32 AX_ENGINE_GetHandleModelType(AX_ENGINE_HANDLE nHandle, AX_ENGINE_MODEL_TYPE_T* pModelType);</cite></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>python</strong></p></td>
+<td><p><cite>model_type, ret = axcl.npu.get_handle_model_type(handle)</cite></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>handle</strong> (<em>int</em>) – The handle to query</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>model_type</strong> (<em>int</em>) - the type(see <a class="reference internal" href="#axcl.npu.axcl_npu_type.AX_ENGINE_MODEL_TYPE_T" title="axcl.npu.axcl_npu_type.AX_ENGINE_MODEL_TYPE_T"><code class="xref py py-class docutils literal notranslate"><span class="pre">axcl.npu.axcl_npu_type.AX_ENGINE_MODEL_TYPE_T</span></code></a>) of the model, <strong>ret</strong> (<em>int</em>) - result code</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="axcl.npu.axcl_npu.get_io_info">
+<span class="sig-name descname"><span class="pre">get_io_info</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">handle</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">dict</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#axcl.npu.axcl_npu.get_io_info" title="Link to this definition">#</a></dt>
+<dd><p>Retrieve IO information for the specified handle.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Language</strong></p></th>
+<th class="head"><p><strong>Function Prototype</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>C</strong></p></td>
+<td><p><cite>AX_S32 AX_ENGINE_GetIOInfo(AX_ENGINE_HANDLE nHandle, AX_ENGINE_IO_INFO_T** pIO);</cite></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>python</strong></p></td>
+<td><p><cite>io_info, ret = axcl.npu.get_io_info(handle)</cite></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>handle</strong> (<em>int</em>) – The handle to query</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>io_info</strong> (<em>dict</em>) - IO information(see <a class="reference internal" href="#axcl.npu.axcl_npu_type.AX_ENGINE_IO_INFO_T" title="axcl.npu.axcl_npu_type.AX_ENGINE_IO_INFO_T"><code class="xref py py-class docutils literal notranslate"><span class="pre">axcl.npu.axcl_npu_type.AX_ENGINE_IO_INFO_T</span></code></a>), <strong>ret</strong> (<em>int</em>) - result code</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="axcl.npu.axcl_npu.get_group_io_info_count">
+<span class="sig-name descname"><span class="pre">get_group_io_info_count</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">handle</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#axcl.npu.axcl_npu.get_group_io_info_count" title="Link to this definition">#</a></dt>
+<dd><p>Get the count of IO information groups for the specified handle.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Language</strong></p></th>
+<th class="head"><p><strong>Function Prototype</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>C</strong></p></td>
+<td><p><cite>AX_S32 AX_ENGINE_GetGroupIOInfoCount(AX_ENGINE_HANDLE nHandle, AX_U32* pCount);</cite></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>python</strong></p></td>
+<td><p><cite>count, ret = axcl.npu.get_group_io_info_count(handle)</cite></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>handle</strong> (<em>int</em>) – The handle to query</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>count</strong> (<em>int</em>) - number of IO information groups, <strong>ret</strong> (<em>int</em>) - result code</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="axcl.npu.axcl_npu.get_group_io_info">
+<span class="sig-name descname"><span class="pre">get_group_io_info</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">handle</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">index</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">dict</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#axcl.npu.axcl_npu.get_group_io_info" title="Link to this definition">#</a></dt>
+<dd><p>Get IO information for a specific group index.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Language</strong></p></th>
+<th class="head"><p><strong>Function Prototype</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>C</strong></p></td>
+<td><p><cite>AX_S32 AX_ENGINE_GetGroupIOInfo(AX_ENGINE_HANDLE nHandle, AX_U32 nIndex, AX_ENGINE_IO_INFO_T** pIO);</cite></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>python</strong></p></td>
+<td><p><cite>io_info, ret = axcl.npu.get_group_io_info(handle, index)</cite></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>handle</strong> (<em>int</em>) – The handle to query</p></li>
+<li><p><strong>index</strong> (<em>int</em>) – The index of the group</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>io_info</strong> (<em>dict</em>) - IO information(see <a class="reference internal" href="#axcl.npu.axcl_npu_type.AX_ENGINE_IO_INFO_T" title="axcl.npu.axcl_npu_type.AX_ENGINE_IO_INFO_T"><code class="xref py py-class docutils literal notranslate"><span class="pre">axcl.npu.axcl_npu_type.AX_ENGINE_IO_INFO_T</span></code></a>) for the group, <strong>ret</strong> (<em>int</em>) - result code</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="axcl.npu.axcl_npu.create_context">
+<span class="sig-name descname"><span class="pre">create_context</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">handle</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="headerlink" href="#axcl.npu.axcl_npu.create_context" title="Link to this definition">#</a></dt>
+<dd><p>Create a context for the specified handle.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Language</strong></p></th>
+<th class="head"><p><strong>Function Prototype</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>C</strong></p></td>
+<td><p><cite>AX_S32 AX_ENGINE_CreateContext(AX_ENGINE_HANDLE handle);</cite></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>python</strong></p></td>
+<td><p><cite>ret = axcl.npu.create_context(handle)</cite></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>handle</strong> (<em>int</em>) – The handle for which to create a context</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>ret</strong> (<em>int</em>) - 0 indicates success, otherwise failure</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="axcl.npu.axcl_npu.create_context_v2">
+<span class="sig-name descname"><span class="pre">create_context_v2</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">handle</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#axcl.npu.axcl_npu.create_context_v2" title="Link to this definition">#</a></dt>
+<dd><p>Create a context for the specified handle, returning the context.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Language</strong></p></th>
+<th class="head"><p><strong>Function Prototype</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>C</strong></p></td>
+<td><p><cite>AX_S32 AX_ENGINE_CreateContextV2(AX_ENGINE_HANDLE handle, AX_ENGINE_CONTEXT_T* pContext);</cite></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>python</strong></p></td>
+<td><p><cite>ctx, ret = axcl.npu.create_context_v2(handle)</cite></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>handle</strong> (<em>int</em>) – The handle for which to create a context</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>ctx</strong> (<em>int</em>) - the created context, <strong>ret</strong> (<em>int</em>) - result code</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="axcl.npu.axcl_npu.run_sync">
+<span class="sig-name descname"><span class="pre">run_sync</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">handle</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">io</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="headerlink" href="#axcl.npu.axcl_npu.run_sync" title="Link to this definition">#</a></dt>
+<dd><p>Execute synchronous operation with the provided IO.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Language</strong></p></th>
+<th class="head"><p><strong>Function Prototype</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>C</strong></p></td>
+<td><p><cite>AX_S32 AX_ENGINE_RunSync(AX_ENGINE_HANDLE handle, AX_ENGINE_IO_T* pIO);</cite></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>python</strong></p></td>
+<td><p><cite>ret = axcl.npu.run_sync(handle, io)</cite></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>handle</strong> (<em>int</em>) – The handle to execute the operation</p></li>
+<li><p><strong>io</strong> (<em>dict</em>) – Input and output data for the operation, see <a class="reference internal" href="#axcl.npu.axcl_npu_type.AX_ENGINE_IO_T" title="axcl.npu.axcl_npu_type.AX_ENGINE_IO_T"><code class="xref py py-class docutils literal notranslate"><span class="pre">axcl.npu.axcl_npu_type.AX_ENGINE_IO_T</span></code></a></p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>ret</strong> (<em>int</em>) - 0 indicates success, otherwise failure</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="axcl.npu.axcl_npu.run_sync_v2">
+<span class="sig-name descname"><span class="pre">run_sync_v2</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">handle</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">context</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">io</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="headerlink" href="#axcl.npu.axcl_npu.run_sync_v2" title="Link to this definition">#</a></dt>
+<dd><p>Execute synchronous operation with context and provided IO.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Language</strong></p></th>
+<th class="head"><p><strong>Function Prototype</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>C</strong></p></td>
+<td><p><cite>AX_S32 AX_ENGINE_RunSyncV2(AX_ENGINE_HANDLE handle, AX_ENGINE_CONTEXT_T context, AX_ENGINE_IO_T* pIO);</cite></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>python</strong></p></td>
+<td><p><cite>ret = axcl.npu.run_sync_v2(handle, context, io)</cite></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>handle</strong> (<em>int</em>) – The handle to execute the operation</p></li>
+<li><p><strong>context</strong> (<em>int</em>) – The context for the operation</p></li>
+<li><p><strong>io</strong> (<em>dict</em>) – Input and output data for the operation, see <a class="reference internal" href="#axcl.npu.axcl_npu_type.AX_ENGINE_IO_T" title="axcl.npu.axcl_npu_type.AX_ENGINE_IO_T"><code class="xref py py-class docutils literal notranslate"><span class="pre">axcl.npu.axcl_npu_type.AX_ENGINE_IO_T</span></code></a></p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>ret</strong> (<em>int</em>) - 0 indicates success, otherwise failure</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="axcl.npu.axcl_npu.run_group_io_sync">
+<span class="sig-name descname"><span class="pre">run_group_io_sync</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">handle</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">context</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">index</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">io</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="headerlink" href="#axcl.npu.axcl_npu.run_group_io_sync" title="Link to this definition">#</a></dt>
+<dd><p>Execute synchronous operation for a specific group with context.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Language</strong></p></th>
+<th class="head"><p><strong>Function Prototype</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>C</strong></p></td>
+<td><p><cite>AX_S32 AX_ENGINE_RunGroupIOSync(AX_ENGINE_HANDLE handle, AX_ENGINE_CONTEXT_T context, AX_U32 nIndex, AX_ENGINE_IO_T* pIO);</cite></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>python</strong></p></td>
+<td><p><cite>ret = axcl.npu.run_group_io_sync(handle, context, index, io)</cite></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>handle</strong> (<em>int</em>) – The handle to execute the operation</p></li>
+<li><p><strong>context</strong> (<em>int</em>) – The context for the operation</p></li>
+<li><p><strong>index</strong> (<em>int</em>) – The index of the group</p></li>
+<li><p><strong>io</strong> (<em>dict</em>) – Input and output data for the operation, see <a class="reference internal" href="#axcl.npu.axcl_npu_type.AX_ENGINE_IO_T" title="axcl.npu.axcl_npu_type.AX_ENGINE_IO_T"><code class="xref py py-class docutils literal notranslate"><span class="pre">axcl.npu.axcl_npu_type.AX_ENGINE_IO_T</span></code></a></p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>ret</strong> (<em>int</em>) - 0 indicates success, otherwise failure</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="axcl.npu.axcl_npu.get_affinity">
+<span class="sig-name descname"><span class="pre">get_affinity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">handle</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#axcl.npu.axcl_npu.get_affinity" title="Link to this definition">#</a></dt>
+<dd><p>Retrieve the affinity of the specified handle.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Language</strong></p></th>
+<th class="head"><p><strong>Function Prototype</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>C</strong></p></td>
+<td><p><cite>AX_S32 AX_ENGINE_GetAffinity(AX_ENGINE_HANDLE nHandle, AX_ENGINE_NPU_SET_T* pNpuSet);</cite></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>python</strong></p></td>
+<td><p><cite>affinity, ret = axcl.npu.get_affinity(handle)</cite></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>handle</strong> (<em>int</em>) – The handle to query</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>affinity</strong> (<em>int</em>) - the affinity value, <strong>ret</strong> (<em>int</em>) - result code</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="axcl.npu.axcl_npu.set_affinity">
+<span class="sig-name descname"><span class="pre">set_affinity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">handle</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">npu_set</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="headerlink" href="#axcl.npu.axcl_npu.set_affinity" title="Link to this definition">#</a></dt>
+<dd><p>Set the affinity for the specified handle.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Language</strong></p></th>
+<th class="head"><p><strong>Function Prototype</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>C</strong></p></td>
+<td><p><cite>AX_S32 AX_ENGINE_SetAffinity(AX_ENGINE_HANDLE nHandle, AX_ENGINE_NPU_SET_T nNpuSet);</cite></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>python</strong></p></td>
+<td><p><cite>ret = axcl.npu.set_affinity(handle, npu_set)</cite></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>handle</strong> (<em>int</em>) – The handle to set the affinity for</p></li>
+<li><p><strong>npu_set</strong> (<em>int</em>) – The NPU set to assign</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>ret</strong> (<em>int</em>) - 0 indicates success, otherwise failure</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="axcl.npu.axcl_npu.get_cmm_usage">
+<span class="sig-name descname"><span class="pre">get_cmm_usage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">handle</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">dict</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#axcl.npu.axcl_npu.get_cmm_usage" title="Link to this definition">#</a></dt>
+<dd><p>Retrieve CMM usage information for the specified handle.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Language</strong></p></th>
+<th class="head"><p><strong>Function Prototype</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>C</strong></p></td>
+<td><p><cite>AX_S32 AX_ENGINE_GetCMMUsage(AX_ENGINE_HANDLE nHandle, AX_ENGINE_CMM_INFO* pCMMInfo);</cite></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>python</strong></p></td>
+<td><p><cite>cmm_info, ret = axcl.npu.get_cmm_usage(handle)</cite></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>handle</strong> (<em>int</em>) – The handle to query</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>cmm_info</strong> (<em>dict</em>) - CMM usage information(see <a class="reference internal" href="#axcl.npu.axcl_npu_type.AX_ENGINE_CMM_INFO" title="axcl.npu.axcl_npu_type.AX_ENGINE_CMM_INFO"><code class="xref py py-class docutils literal notranslate"><span class="pre">axcl.npu.axcl_npu_type.AX_ENGINE_CMM_INFO</span></code></a>), <strong>ret</strong> (<em>int</em>) - result code</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="axcl.npu.axcl_npu.get_model_tools_version">
+<span class="sig-name descname"><span class="pre">get_model_tools_version</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">handle</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#axcl.npu.axcl_npu.get_model_tools_version" title="Link to this definition">#</a></dt>
+<dd><p>Retrieve the model tools version for the specified handle.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Language</strong></p></th>
+<th class="head"><p><strong>Function Prototype</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>C</strong></p></td>
+<td><p><cite>const AX_CHAR* AX_ENGINE_GetModelToolsVersion(AX_ENGINE_HANDLE nHandle);</cite></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>python</strong></p></td>
+<td><p><cite>version = axcl.npu.get_model_tools_version(handle)</cite></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>handle</strong> (<em>int</em>) – The handle to query</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>version</strong> (<em>str</em>) - the version string of the model tools</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-axcl.npu.axcl_npu_type">
+<span id="types"></span><h2><span class="section-number">12.4.2. </span>types<a class="headerlink" href="#module-axcl.npu.axcl_npu_type" title="Link to this heading">#</a></h2>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="axcl.npu.axcl_npu_type.AX_ENGINE_TENSOR_LAYOUT_T">
+<span class="sig-name descname"><span class="pre">AX_ENGINE_TENSOR_LAYOUT_T</span></span><a class="headerlink" href="#axcl.npu.axcl_npu_type.AX_ENGINE_TENSOR_LAYOUT_T" title="Link to this definition">#</a></dt>
+<dd><p>tensor layout type</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">AX_ENGINE_TENSOR_LAYOUT_UNKNOWN</span>  <span class="o">=</span> <span class="mh">0x0</span>
+<span class="n">AX_ENGINE_TENSOR_LAYOUT_NHWC</span>     <span class="o">=</span> <span class="mh">0x1</span>
+<span class="n">AX_ENGINE_TENSOR_LAYOUT_NCHW</span>     <span class="o">=</span> <span class="mh">0x2</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="axcl.npu.axcl_npu_type.AX_ENGINE_MEMORY_TYPE_T">
+<span class="sig-name descname"><span class="pre">AX_ENGINE_MEMORY_TYPE_T</span></span><a class="headerlink" href="#axcl.npu.axcl_npu_type.AX_ENGINE_MEMORY_TYPE_T" title="Link to this definition">#</a></dt>
+<dd><p>tensor memory type</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">AX_ENGINE_MT_PHYSICAL</span>  <span class="o">=</span> <span class="mh">0x0</span>
+<span class="n">AX_ENGINE_MT_VIRTUAL</span>   <span class="o">=</span> <span class="mh">0x1</span>
+<span class="n">AX_ENGINE_MT_OCM</span>       <span class="o">=</span> <span class="mh">0x2</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="axcl.npu.axcl_npu_type.AX_ENGINE_DATA_TYPE_T">
+<span class="sig-name descname"><span class="pre">AX_ENGINE_DATA_TYPE_T</span></span><a class="headerlink" href="#axcl.npu.axcl_npu_type.AX_ENGINE_DATA_TYPE_T" title="Link to this definition">#</a></dt>
+<dd><p>tensor data type</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">AX_ENGINE_DT_UNKNOWN</span>  <span class="o">=</span> <span class="mh">0x0</span>
+<span class="n">AX_ENGINE_DT_UINT8</span>    <span class="o">=</span> <span class="mh">0x1</span>
+<span class="n">AX_ENGINE_DT_UINT16</span>   <span class="o">=</span> <span class="mh">0x2</span>
+<span class="n">AX_ENGINE_DT_FLOAT32</span>  <span class="o">=</span> <span class="mh">0x3</span>
+<span class="n">AX_ENGINE_DT_SINT16</span>   <span class="o">=</span> <span class="mh">0x4</span>
+<span class="n">AX_ENGINE_DT_SINT8</span>    <span class="o">=</span> <span class="mh">0x5</span>
+<span class="n">AX_ENGINE_DT_SINT32</span>   <span class="o">=</span> <span class="mh">0x6</span>
+<span class="n">AX_ENGINE_DT_UINT32</span>   <span class="o">=</span> <span class="mh">0x7</span>
+<span class="n">AX_ENGINE_DT_FLOAT64</span>  <span class="o">=</span> <span class="mh">0x8</span>
+<span class="n">AX_ENGINE_DT_UINT10_PACKED</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="n">AX_ENGINE_DT_UINT12_PACKED</span> <span class="o">=</span> <span class="mi">101</span>
+<span class="n">AX_ENGINE_DT_UINT14_PACKED</span> <span class="o">=</span> <span class="mi">102</span>
+<span class="n">AX_ENGINE_DT_UINT16_PACKED</span> <span class="o">=</span> <span class="mi">103</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="axcl.npu.axcl_npu_type.AX_ENGINE_COLOR_SPACE_T">
+<span class="sig-name descname"><span class="pre">AX_ENGINE_COLOR_SPACE_T</span></span><a class="headerlink" href="#axcl.npu.axcl_npu_type.AX_ENGINE_COLOR_SPACE_T" title="Link to this definition">#</a></dt>
+<dd><p>tensor color space type</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">AX_ENGINE_CS_FEATUREMAP</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">AX_ENGINE_CS_RAW10</span>      <span class="o">=</span> <span class="mi">1</span>
+<span class="n">AX_ENGINE_CS_RAW12</span>      <span class="o">=</span> <span class="mi">2</span>
+<span class="n">AX_ENGINE_CS_RAW16</span>      <span class="o">=</span> <span class="mi">3</span>
+<span class="n">AX_ENGINE_CS_NV12</span>       <span class="o">=</span> <span class="mi">4</span>
+<span class="n">AX_ENGINE_CS_NV21</span>       <span class="o">=</span> <span class="mi">5</span>
+<span class="n">AX_ENGINE_CS_RGB</span>        <span class="o">=</span> <span class="mi">6</span>
+<span class="n">AX_ENGINE_CS_BGR</span>        <span class="o">=</span> <span class="mi">7</span>
+<span class="n">AX_ENGINE_CS_RGBA</span>       <span class="o">=</span> <span class="mi">8</span>
+<span class="n">AX_ENGINE_CS_GRAY</span>       <span class="o">=</span> <span class="mi">9</span>
+<span class="n">AX_ENGINE_CS_YUV444</span>     <span class="o">=</span> <span class="mi">10</span>
+<span class="n">AX_ENGINE_CS_RAW14</span>      <span class="o">=</span> <span class="mi">11</span>
+<span class="n">AX_ENGINE_CS_RAW8</span>       <span class="o">=</span> <span class="mi">12</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="axcl.npu.axcl_npu_type.AX_ENGINE_NPU_MODE_T">
+<span class="sig-name descname"><span class="pre">AX_ENGINE_NPU_MODE_T</span></span><a class="headerlink" href="#axcl.npu.axcl_npu_type.AX_ENGINE_NPU_MODE_T" title="Link to this definition">#</a></dt>
+<dd><p>vnpu type</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">AX_ENGINE_VIRTUAL_NPU_DISABLE</span>    <span class="o">=</span> <span class="mi">0</span>
+<span class="n">AX_ENGINE_VIRTUAL_NPU_STD</span>        <span class="o">=</span> <span class="mi">1</span>
+<span class="n">AX_ENGINE_VIRTUAL_NPU_BIG_LITTLE</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">AX_ENGINE_VIRTUAL_NPU_LITTLE_BIG</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">AX_ENGINE_VIRTUAL_NPU_BUTT</span>       <span class="o">=</span> <span class="mi">4</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="axcl.npu.axcl_npu_type.AX_ENGINE_MODEL_TYPE_T">
+<span class="sig-name descname"><span class="pre">AX_ENGINE_MODEL_TYPE_T</span></span><a class="headerlink" href="#axcl.npu.axcl_npu_type.AX_ENGINE_MODEL_TYPE_T" title="Link to this definition">#</a></dt>
+<dd><p>model type</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">AX_ENGINE_MODEL_TYPE0</span>     <span class="o">=</span> <span class="mi">0</span>
+<span class="n">AX_ENGINE_MODEL_TYPE1</span>     <span class="o">=</span> <span class="mi">1</span>
+<span class="n">AX_ENGINE_MODEL_TYPE2</span>     <span class="o">=</span> <span class="mi">2</span>
+<span class="n">AX_ENGINE_MODEL_TYPE_BUTT</span> <span class="o">=</span> <span class="mi">3</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="axcl.npu.axcl_npu_type.AX_ENGINE_NPU_ATTR_T">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">AX_ENGINE_NPU_ATTR_T</span></span><a class="headerlink" href="#axcl.npu.axcl_npu_type.AX_ENGINE_NPU_ATTR_T" title="Link to this definition">#</a></dt>
+<dd><p>NPU attributes structure.</p>
+<pre class="literal-block">dict_npu_attr = {
+    &quot;hard_mode&quot;: <a class="reference internal" href="#axcl.npu.axcl_npu_type.AX_ENGINE_NPU_MODE_T" title="axcl.npu.axcl_npu_type.AX_ENGINE_NPU_MODE_T"><code class="xref py py-class docutils literal notranslate"><span class="pre">AX_ENGINE_NPU_MODE_T</span></code></a>,
+    &quot;reserved&quot;: [int]
+}</pre>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="axcl.npu.axcl_npu_type.AX_ENGINE_IOMETA_EX_T">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">AX_ENGINE_IOMETA_EX_T</span></span><a class="headerlink" href="#axcl.npu.axcl_npu_type.AX_ENGINE_IOMETA_EX_T" title="Link to this definition">#</a></dt>
+<dd><p>Extended IO metadata structure.</p>
+<pre class="literal-block">dict_io_meta_ex = {
+    &quot;color_space&quot;: <a class="reference internal" href="#axcl.npu.axcl_npu_type.AX_ENGINE_COLOR_SPACE_T" title="axcl.npu.axcl_npu_type.AX_ENGINE_COLOR_SPACE_T"><code class="xref py py-class docutils literal notranslate"><span class="pre">AX_ENGINE_COLOR_SPACE_T</span></code></a>,
+    &quot;reserved&quot;: [int]
+}</pre>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="axcl.npu.axcl_npu_type.AX_ENGINE_IOMETA_T">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">AX_ENGINE_IOMETA_T</span></span><a class="headerlink" href="#axcl.npu.axcl_npu_type.AX_ENGINE_IOMETA_T" title="Link to this definition">#</a></dt>
+<dd><p>IO metadata structure.</p>
+<pre class="literal-block">dict_io_meta = {
+    &quot;name&quot;: str,
+    &quot;shape&quot;: [int],
+    &quot;shape_size&quot;: int,
+    &quot;layout&quot;: <a class="reference internal" href="#axcl.npu.axcl_npu_type.AX_ENGINE_TENSOR_LAYOUT_T" title="axcl.npu.axcl_npu_type.AX_ENGINE_TENSOR_LAYOUT_T"><code class="xref py py-class docutils literal notranslate"><span class="pre">AX_ENGINE_TENSOR_LAYOUT_T</span></code></a>,
+    &quot;memory_type&quot;: <a class="reference internal" href="#axcl.npu.axcl_npu_type.AX_ENGINE_MEMORY_TYPE_T" title="axcl.npu.axcl_npu_type.AX_ENGINE_MEMORY_TYPE_T"><code class="xref py py-class docutils literal notranslate"><span class="pre">AX_ENGINE_MEMORY_TYPE_T</span></code></a>,
+    &quot;data_type&quot;: <a class="reference internal" href="#axcl.npu.axcl_npu_type.AX_ENGINE_DATA_TYPE_T" title="axcl.npu.axcl_npu_type.AX_ENGINE_DATA_TYPE_T"><code class="xref py py-class docutils literal notranslate"><span class="pre">AX_ENGINE_DATA_TYPE_T</span></code></a>,
+    &quot;extra_meta&quot;: <a class="reference internal" href="#axcl.npu.axcl_npu_type.AX_ENGINE_IOMETA_EX_T" title="axcl.npu.axcl_npu_type.AX_ENGINE_IOMETA_EX_T"><code class="xref py py-class docutils literal notranslate"><span class="pre">AX_ENGINE_IOMETA_EX_T</span></code></a>,
+    &quot;size&quot;: int,
+    &quot;quantization_value&quot;: int,
+    &quot;stride&quot;: [int],
+    &quot;reserved&quot;: [int]
+}</pre>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="axcl.npu.axcl_npu_type.AX_ENGINE_IO_INFO_T">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">AX_ENGINE_IO_INFO_T</span></span><a class="headerlink" href="#axcl.npu.axcl_npu_type.AX_ENGINE_IO_INFO_T" title="Link to this definition">#</a></dt>
+<dd><pre class="literal-block">dict_engine_io_info = {
+    &quot;inputs&quot;: <a class="reference internal" href="#axcl.npu.axcl_npu_type.AX_ENGINE_IOMETA_T" title="axcl.npu.axcl_npu_type.AX_ENGINE_IOMETA_T"><code class="xref py py-class docutils literal notranslate"><span class="pre">AX_ENGINE_IOMETA_T</span></code></a>,
+    &quot;input_size&quot;: int,
+    &quot;outputs&quot;: <a class="reference internal" href="#axcl.npu.axcl_npu_type.AX_ENGINE_IOMETA_T" title="axcl.npu.axcl_npu_type.AX_ENGINE_IOMETA_T"><code class="xref py py-class docutils literal notranslate"><span class="pre">AX_ENGINE_IOMETA_T</span></code></a>,
+    &quot;output_size&quot;: int,
+    &quot;max_batch_size&quot;: int,
+    &quot;dynamic_batch_size&quot;: int,
+    &quot;reserved&quot;: [int]
+}</pre>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="axcl.npu.axcl_npu_type.AX_ENGINE_IO_BUFFER_T">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">AX_ENGINE_IO_BUFFER_T</span></span><a class="headerlink" href="#axcl.npu.axcl_npu_type.AX_ENGINE_IO_BUFFER_T" title="Link to this definition">#</a></dt>
+<dd><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">dict_engine_io_buffer</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;physical_address&quot;</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+    <span class="s2">&quot;virtual_address&quot;</span><span class="p">:</span> <span class="n">pointer</span><span class="p">,</span>
+    <span class="s2">&quot;size&quot;</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+    <span class="s2">&quot;stride&quot;</span><span class="p">:</span> <span class="p">[</span><span class="nb">int</span><span class="p">],</span>
+    <span class="s2">&quot;stride_size&quot;</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+    <span class="s2">&quot;reserved&quot;</span><span class="p">:</span> <span class="p">[</span><span class="nb">int</span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="axcl.npu.axcl_npu_type.AX_ENGINE_IO_SETTING_T">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">AX_ENGINE_IO_SETTING_T</span></span><a class="headerlink" href="#axcl.npu.axcl_npu_type.AX_ENGINE_IO_SETTING_T" title="Link to this definition">#</a></dt>
+<dd><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">dict_engine_io_setting</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;wbt_index&quot;</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+    <span class="s2">&quot;reserved&quot;</span><span class="p">:</span> <span class="p">[</span><span class="nb">int</span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="axcl.npu.axcl_npu_type.AX_ENGINE_IO_T">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">AX_ENGINE_IO_T</span></span><a class="headerlink" href="#axcl.npu.axcl_npu_type.AX_ENGINE_IO_T" title="Link to this definition">#</a></dt>
+<dd><pre class="literal-block">dict_engine_io = {
+    &quot;inputs&quot;: <a class="reference internal" href="#axcl.npu.axcl_npu_type.AX_ENGINE_IO_BUFFER_T" title="axcl.npu.axcl_npu_type.AX_ENGINE_IO_BUFFER_T"><code class="xref py py-class docutils literal notranslate"><span class="pre">AX_ENGINE_IO_BUFFER_T</span></code></a>,
+    &quot;input_size&quot;: int,
+    &quot;outputs&quot;: <a class="reference internal" href="#axcl.npu.axcl_npu_type.AX_ENGINE_IO_BUFFER_T" title="axcl.npu.axcl_npu_type.AX_ENGINE_IO_BUFFER_T"><code class="xref py py-class docutils literal notranslate"><span class="pre">AX_ENGINE_IO_BUFFER_T</span></code></a>,
+    &quot;output_size&quot;: int,
+    &quot;batch_size&quot;: int,
+    &quot;io_setting&quot;: <a class="reference internal" href="#axcl.npu.axcl_npu_type.AX_ENGINE_IO_SETTING_T" title="axcl.npu.axcl_npu_type.AX_ENGINE_IO_SETTING_T"><code class="xref py py-class docutils literal notranslate"><span class="pre">AX_ENGINE_IO_SETTING_T</span></code></a>,
+    &quot;parallel_run&quot;: int,
+    &quot;reserved&quot;: [int]
+}</pre>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="axcl.npu.axcl_npu_type.AX_ENGINE_HANDLE_EXTRA_T">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">AX_ENGINE_HANDLE_EXTRA_T</span></span><a class="headerlink" href="#axcl.npu.axcl_npu_type.AX_ENGINE_HANDLE_EXTRA_T" title="Link to this definition">#</a></dt>
+<dd><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">dict_engine_handle_extra</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;npu_set&quot;</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+    <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="s2">&quot;reserved&quot;</span><span class="p">:</span> <span class="p">[</span><span class="nb">int</span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="axcl.npu.axcl_npu_type.AX_ENGINE_CMM_INFO">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">AX_ENGINE_CMM_INFO</span></span><a class="headerlink" href="#axcl.npu.axcl_npu_type.AX_ENGINE_CMM_INFO" title="Link to this definition">#</a></dt>
+<dd><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">dict_engine_cmm_info</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;cmm_size&quot;</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="pyAXCL.pool.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">12.3. </span>axcl.pool</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="pyAXCL.vdec.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">12.5. </span>axcl.vdec</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-axcl.npu.axcl_npu">12.4.1. api</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.npu.axcl_npu.get_version"><code class="docutils literal notranslate"><span class="pre">get_version()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.npu.axcl_npu.npu_reset"><code class="docutils literal notranslate"><span class="pre">npu_reset()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.npu.axcl_npu.init"><code class="docutils literal notranslate"><span class="pre">init()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.npu.axcl_npu.get_npu_attr"><code class="docutils literal notranslate"><span class="pre">get_npu_attr()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.npu.axcl_npu.deinit"><code class="docutils literal notranslate"><span class="pre">deinit()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.npu.axcl_npu.get_model_type"><code class="docutils literal notranslate"><span class="pre">get_model_type()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.npu.axcl_npu.create_handle"><code class="docutils literal notranslate"><span class="pre">create_handle()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.npu.axcl_npu.create_handle_v2"><code class="docutils literal notranslate"><span class="pre">create_handle_v2()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.npu.axcl_npu.destroy_handle"><code class="docutils literal notranslate"><span class="pre">destroy_handle()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.npu.axcl_npu.get_handle_model_type"><code class="docutils literal notranslate"><span class="pre">get_handle_model_type()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.npu.axcl_npu.get_io_info"><code class="docutils literal notranslate"><span class="pre">get_io_info()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.npu.axcl_npu.get_group_io_info_count"><code class="docutils literal notranslate"><span class="pre">get_group_io_info_count()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.npu.axcl_npu.get_group_io_info"><code class="docutils literal notranslate"><span class="pre">get_group_io_info()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.npu.axcl_npu.create_context"><code class="docutils literal notranslate"><span class="pre">create_context()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.npu.axcl_npu.create_context_v2"><code class="docutils literal notranslate"><span class="pre">create_context_v2()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.npu.axcl_npu.run_sync"><code class="docutils literal notranslate"><span class="pre">run_sync()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.npu.axcl_npu.run_sync_v2"><code class="docutils literal notranslate"><span class="pre">run_sync_v2()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.npu.axcl_npu.run_group_io_sync"><code class="docutils literal notranslate"><span class="pre">run_group_io_sync()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.npu.axcl_npu.get_affinity"><code class="docutils literal notranslate"><span class="pre">get_affinity()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.npu.axcl_npu.set_affinity"><code class="docutils literal notranslate"><span class="pre">set_affinity()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.npu.axcl_npu.get_cmm_usage"><code class="docutils literal notranslate"><span class="pre">get_cmm_usage()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.npu.axcl_npu.get_model_tools_version"><code class="docutils literal notranslate"><span class="pre">get_model_tools_version()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-axcl.npu.axcl_npu_type">12.4.2. types</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.npu.axcl_npu_type.AX_ENGINE_TENSOR_LAYOUT_T"><code class="docutils literal notranslate"><span class="pre">AX_ENGINE_TENSOR_LAYOUT_T</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.npu.axcl_npu_type.AX_ENGINE_MEMORY_TYPE_T"><code class="docutils literal notranslate"><span class="pre">AX_ENGINE_MEMORY_TYPE_T</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.npu.axcl_npu_type.AX_ENGINE_DATA_TYPE_T"><code class="docutils literal notranslate"><span class="pre">AX_ENGINE_DATA_TYPE_T</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.npu.axcl_npu_type.AX_ENGINE_COLOR_SPACE_T"><code class="docutils literal notranslate"><span class="pre">AX_ENGINE_COLOR_SPACE_T</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.npu.axcl_npu_type.AX_ENGINE_NPU_MODE_T"><code class="docutils literal notranslate"><span class="pre">AX_ENGINE_NPU_MODE_T</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.npu.axcl_npu_type.AX_ENGINE_MODEL_TYPE_T"><code class="docutils literal notranslate"><span class="pre">AX_ENGINE_MODEL_TYPE_T</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.npu.axcl_npu_type.AX_ENGINE_NPU_ATTR_T"><code class="docutils literal notranslate"><span class="pre">AX_ENGINE_NPU_ATTR_T</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.npu.axcl_npu_type.AX_ENGINE_IOMETA_EX_T"><code class="docutils literal notranslate"><span class="pre">AX_ENGINE_IOMETA_EX_T</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.npu.axcl_npu_type.AX_ENGINE_IOMETA_T"><code class="docutils literal notranslate"><span class="pre">AX_ENGINE_IOMETA_T</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.npu.axcl_npu_type.AX_ENGINE_IO_INFO_T"><code class="docutils literal notranslate"><span class="pre">AX_ENGINE_IO_INFO_T</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.npu.axcl_npu_type.AX_ENGINE_IO_BUFFER_T"><code class="docutils literal notranslate"><span class="pre">AX_ENGINE_IO_BUFFER_T</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.npu.axcl_npu_type.AX_ENGINE_IO_SETTING_T"><code class="docutils literal notranslate"><span class="pre">AX_ENGINE_IO_SETTING_T</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.npu.axcl_npu_type.AX_ENGINE_IO_T"><code class="docutils literal notranslate"><span class="pre">AX_ENGINE_IO_T</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.npu.axcl_npu_type.AX_ENGINE_HANDLE_EXTRA_T"><code class="docutils literal notranslate"><span class="pre">AX_ENGINE_HANDLE_EXTRA_T</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.npu.axcl_npu_type.AX_ENGINE_CMM_INFO"><code class="docutils literal notranslate"><span class="pre">AX_ENGINE_CMM_INFO</span></code></a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By kalcohol
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024, AXERA Semiconductor Co., Ltd..
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

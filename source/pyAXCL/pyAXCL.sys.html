@@ -1,0 +1,1458 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>12.2. axcl.sys &#8212; AXCL V3.6.5 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../_static/documentation_options.js?v=6e648b6a"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'pyAXCL/pyAXCL.sys';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="12.3. axcl.pool" href="pyAXCL.pool.html" />
+    <link rel="prev" title="12.1. axcl.rt" href="pyAXCL.rt.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">AXCL V3.6.5 documentation</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">目录</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../doc_update_info.html">1. 版本信息</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../doc_introduction.html">2. 简介</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../doc_guide_setup.html">3. 驱动安装</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../doc_guide_axcl_smi.html">4. AXCL-SMI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../doc_guide_quick_start.html">5. 快速上手</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../doc_guide_npu_samples.html">6. NPU 示例</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../doc_guide_npu_benchmark.html">7. NPU Benchmark</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../doc_guide_samples.html">8. SDK Samples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../doc_guide_axcl_api.html">9. SDK API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../doc_guide_compile.html">10. SDK 编译</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../doc_guide_ffmpeg.html">11. FFmpeg</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="pyAXCL.html">12. pyAXCL</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="pyAXCL.rt.html">12.1. axcl.rt</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">12.2. axcl.sys</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pyAXCL.pool.html">12.3. axcl.pool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pyAXCL.npu.html">12.4. axcl.npu</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pyAXCL.vdec.html">12.5. axcl.vdec</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pyAXCL.venc.html">12.6. axcl.venc</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pyAXCL.ivps.html">12.7. axcl.ivps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pyAXCL.dmadim.html">12.8. axcl.dmadim</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pyAXCL.ive.html">12.9. axcl.ive</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pyAXCL.utils.html">12.10. axcl.utils</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../doc_guide_faq.html">13. 常见问题</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/pyAXCL/pyAXCL.sys.rst" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.rst</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>axcl.sys</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-axcl.sys.axcl_sys">12.2.1. api</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.sys.axcl_sys.init"><code class="docutils literal notranslate"><span class="pre">init()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.sys.axcl_sys.deinit"><code class="docutils literal notranslate"><span class="pre">deinit()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.sys.axcl_sys.mem_alloc"><code class="docutils literal notranslate"><span class="pre">mem_alloc()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.sys.axcl_sys.mem_alloc_cached"><code class="docutils literal notranslate"><span class="pre">mem_alloc_cached()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.sys.axcl_sys.mem_free"><code class="docutils literal notranslate"><span class="pre">mem_free()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.sys.axcl_sys.mmap"><code class="docutils literal notranslate"><span class="pre">mmap()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.sys.axcl_sys.mmap_cache"><code class="docutils literal notranslate"><span class="pre">mmap_cache()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.sys.axcl_sys.mmap_fast"><code class="docutils literal notranslate"><span class="pre">mmap_fast()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.sys.axcl_sys.mmap_cache_fast"><code class="docutils literal notranslate"><span class="pre">mmap_cache_fast()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.sys.axcl_sys.munmap"><code class="docutils literal notranslate"><span class="pre">munmap()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.sys.axcl_sys.mflush_cache"><code class="docutils literal notranslate"><span class="pre">mflush_cache()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.sys.axcl_sys.minvalidate_cache"><code class="docutils literal notranslate"><span class="pre">minvalidate_cache()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.sys.axcl_sys.mem_get_block_info_by_phy"><code class="docutils literal notranslate"><span class="pre">mem_get_block_info_by_phy()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.sys.axcl_sys.mem_get_block_info_by_virt"><code class="docutils literal notranslate"><span class="pre">mem_get_block_info_by_virt()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.sys.axcl_sys.mem_get_partition_info"><code class="docutils literal notranslate"><span class="pre">mem_get_partition_info()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.sys.axcl_sys.mem_set_config"><code class="docutils literal notranslate"><span class="pre">mem_set_config()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.sys.axcl_sys.mem_get_config"><code class="docutils literal notranslate"><span class="pre">mem_get_config()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.sys.axcl_sys.mem_query_status"><code class="docutils literal notranslate"><span class="pre">mem_query_status()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.sys.axcl_sys.link"><code class="docutils literal notranslate"><span class="pre">link()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.sys.axcl_sys.unlink"><code class="docutils literal notranslate"><span class="pre">unlink()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.sys.axcl_sys.get_link_by_dest"><code class="docutils literal notranslate"><span class="pre">get_link_by_dest()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.sys.axcl_sys.get_link_by_src"><code class="docutils literal notranslate"><span class="pre">get_link_by_src()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.sys.axcl_sys.get_cur_pts"><code class="docutils literal notranslate"><span class="pre">get_cur_pts()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.sys.axcl_sys.init_pts_base"><code class="docutils literal notranslate"><span class="pre">init_pts_base()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.sys.axcl_sys.sync_pts"><code class="docutils literal notranslate"><span class="pre">sync_pts()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.sys.axcl_sys.get_chip_type"><code class="docutils literal notranslate"><span class="pre">get_chip_type()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-axcl.sys.axcl_sys_type">12.2.2. types</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.sys.axcl_sys_type.AX_PARTITION_INFO_T"><code class="docutils literal notranslate"><span class="pre">AX_PARTITION_INFO_T</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.sys.axcl_sys_type.AX_CMM_PARTITION_INFO_T"><code class="docutils literal notranslate"><span class="pre">AX_CMM_PARTITION_INFO_T</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.sys.axcl_sys_type.AX_CMM_STATUS_T"><code class="docutils literal notranslate"><span class="pre">AX_CMM_STATUS_T</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.sys.axcl_sys_type.AX_POOL_CACHE_MODE_E"><code class="docutils literal notranslate"><span class="pre">AX_POOL_CACHE_MODE_E</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.sys.axcl_sys_type.AX_POOL_SOURCE_E"><code class="docutils literal notranslate"><span class="pre">AX_POOL_SOURCE_E</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.sys.axcl_sys_type.AX_POOL_CONFIG_T"><code class="docutils literal notranslate"><span class="pre">AX_POOL_CONFIG_T</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.sys.axcl_sys_type.AX_POOL_FLOORPLAN_T"><code class="docutils literal notranslate"><span class="pre">AX_POOL_FLOORPLAN_T</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.sys.axcl_sys_type.AX_CHIP_TYPE_E"><code class="docutils literal notranslate"><span class="pre">AX_CHIP_TYPE_E</span></code></a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="axcl-sys">
+<h1><span class="section-number">12.2. </span>axcl.sys<a class="headerlink" href="#axcl-sys" title="Link to this heading">#</a></h1>
+<section id="module-axcl.sys.axcl_sys">
+<span id="api"></span><h2><span class="section-number">12.2.1. </span>api<a class="headerlink" href="#module-axcl.sys.axcl_sys" title="Link to this heading">#</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="axcl.sys.axcl_sys.init">
+<span class="sig-name descname"><span class="pre">init</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="headerlink" href="#axcl.sys.axcl_sys.init" title="Link to this definition">#</a></dt>
+<dd><p>Init</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Language</strong></p></th>
+<th class="head"><p><strong>Function Prototype</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>C</strong></p></td>
+<td><p><cite>AX_S32 AXCL_SYS_Init(AX_VOID);</cite></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>python</strong></p></td>
+<td><p><cite>ret = axcl.sys.init()</cite></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>ret</strong> (<em>int</em>) - 0 indicates success, otherwise failure</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="axcl.sys.axcl_sys.deinit">
+<span class="sig-name descname"><span class="pre">deinit</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="headerlink" href="#axcl.sys.axcl_sys.deinit" title="Link to this definition">#</a></dt>
+<dd><p>Init</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Language</strong></p></th>
+<th class="head"><p><strong>Function Prototype</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>C</strong></p></td>
+<td><p><cite>AX_S32 AXCL_SYS_Deinit(AX_VOID);</cite></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>python</strong></p></td>
+<td><p><cite>ret = axcl.sys.deinit()</cite></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>ret</strong> (<em>int</em>) - 0 indicates success, otherwise failure</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="axcl.sys.axcl_sys.mem_alloc">
+<span class="sig-name descname"><span class="pre">mem_alloc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">align</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">token</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#axcl.sys.axcl_sys.mem_alloc" title="Link to this definition">#</a></dt>
+<dd><p>Allocate CMM memory</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Language</strong></p></th>
+<th class="head"><p><strong>Function Prototype</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>C</strong></p></td>
+<td><p><cite>AX_S32 AXCL_SYS_MemAlloc(AX_U64 *phyaddr, AX_VOID **pviraddr, AX_U32 size, AX_U32 align, const AX_S8 *token);</cite></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>python</strong></p></td>
+<td><p><cite>phy_addr, vir_addr, ret = axcl.sys.mem_alloc(size, align, token)</cite></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>size</strong> (<em>int</em>) – memory size</p></li>
+<li><p><strong>align</strong> (<em>int</em>) – memory size align</p></li>
+<li><p><strong>token</strong> (<em>str</em>) – token</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><p>tuple[int, int, int]</p>
+<ul class="simple">
+<li><p><strong>phy_addr</strong> (<em>int</em>) - memory physical address</p></li>
+<li><p><strong>vir_addr</strong> (<em>int</em>) - memory virtual address</p></li>
+<li><p><strong>ret</strong> (<em>int</em>) - 0 indicates success, otherwise failure</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="axcl.sys.axcl_sys.mem_alloc_cached">
+<span class="sig-name descname"><span class="pre">mem_alloc_cached</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">align</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">token</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#axcl.sys.axcl_sys.mem_alloc_cached" title="Link to this definition">#</a></dt>
+<dd><p>Allocate cached CMM memory</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Language</strong></p></th>
+<th class="head"><p><strong>Function Prototype</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>C</strong></p></td>
+<td><p><cite>AX_S32 AXCL_SYS_MemAllocCached(AX_U64 *phyaddr, AX_VOID **pviraddr, AX_U32 size, AX_U32 align, const AX_S8 *token);</cite></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>python</strong></p></td>
+<td><p><cite>phy_addr, vir_addr, ret = axcl.sys.mem_alloc_cached(size, align, token)</cite></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>size</strong> (<em>int</em>) – memory size</p></li>
+<li><p><strong>align</strong> (<em>int</em>) – memory size align</p></li>
+<li><p><strong>token</strong> (<em>str</em>) – token</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><p>tuple[int, int, int]</p>
+<ul class="simple">
+<li><p><strong>phy_addr</strong> (<em>int</em>) - memory physical address</p></li>
+<li><p><strong>vir_addr</strong> (<em>int</em>) - memory virtual address</p></li>
+<li><p><strong>ret</strong> (<em>int</em>) - 0 indicates success, otherwise failure</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="axcl.sys.axcl_sys.mem_free">
+<span class="sig-name descname"><span class="pre">mem_free</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">phy_addr</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vir_addr</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="headerlink" href="#axcl.sys.axcl_sys.mem_free" title="Link to this definition">#</a></dt>
+<dd><p>Free CMM memory</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Language</strong></p></th>
+<th class="head"><p><strong>Function Prototype</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>C</strong></p></td>
+<td><p><cite>AX_S32 AXCL_SYS_MemFree(AX_U64 phyaddr, AX_VOID *pviraddr);</cite></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>python</strong></p></td>
+<td><p><cite>ret = axcl.sys.mem_free(phy_addr, vir_addr)</cite></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>phy_addr</strong> (<em>int</em>) – memory physical address</p></li>
+<li><p><strong>vir_addr</strong> (<em>int</em>) – memory virtual address</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>ret</strong> (<em>int</em>) - 0 indicates success, otherwise failure</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="axcl.sys.axcl_sys.mmap">
+<span class="sig-name descname"><span class="pre">mmap</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">phy_addr</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="headerlink" href="#axcl.sys.axcl_sys.mmap" title="Link to this definition">#</a></dt>
+<dd><p>Map memory physical address to virtual address</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Language</strong></p></th>
+<th class="head"><p><strong>Function Prototype</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>C</strong></p></td>
+<td><p><cite>AX_VOID *AXCL_SYS_Mmap(AX_U64 phyaddr, AX_U32 size);</cite></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>python</strong></p></td>
+<td><p><cite>vir_addr = axcl.sys.mmap(phy_addr, size)</cite></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>phy_addr</strong> (<em>int</em>) – memory physical address</p></li>
+<li><p><strong>size</strong> (<em>int</em>) – memory size</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>vir_addr</strong> (<em>int</em>) - virtual address</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="axcl.sys.axcl_sys.mmap_cache">
+<span class="sig-name descname"><span class="pre">mmap_cache</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">phy_addr</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="headerlink" href="#axcl.sys.axcl_sys.mmap_cache" title="Link to this definition">#</a></dt>
+<dd><p>Map memory physical address to cached virtual address</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Language</strong></p></th>
+<th class="head"><p><strong>Function Prototype</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>C</strong></p></td>
+<td><p><cite>AX_VOID *AXCL_SYS_MmapCache(AX_U64 phyaddr, AX_U32 size);</cite></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>python</strong></p></td>
+<td><p><cite>vir_addr = axcl.sys.mmap_cache(phy_addr, size)</cite></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>phy_addr</strong> (<em>int</em>) – memory physical address</p></li>
+<li><p><strong>size</strong> (<em>int</em>) – memorysize</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>vir_addr</strong> (<em>int</em>) - virtual address</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="axcl.sys.axcl_sys.mmap_fast">
+<span class="sig-name descname"><span class="pre">mmap_fast</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">phy_addr</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="headerlink" href="#axcl.sys.axcl_sys.mmap_fast" title="Link to this definition">#</a></dt>
+<dd><p>Map memory physical address to virtual address fast</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Language</strong></p></th>
+<th class="head"><p><strong>Function Prototype</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>C</strong></p></td>
+<td><p><cite>AX_VOID *AXCL_SYS_MmapFast(AX_U64 phyaddr, AX_U32 size);</cite></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>python</strong></p></td>
+<td><p><cite>vir_addr = axcl.sys.mmap_fast(phy_addr, size)</cite></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>phy_addr</strong> (<em>int</em>) – memory physical address</p></li>
+<li><p><strong>size</strong> (<em>int</em>) – memory size</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>vir_addr</strong> (<em>int</em>) - virtual address</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="axcl.sys.axcl_sys.mmap_cache_fast">
+<span class="sig-name descname"><span class="pre">mmap_cache_fast</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">phy_addr</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="headerlink" href="#axcl.sys.axcl_sys.mmap_cache_fast" title="Link to this definition">#</a></dt>
+<dd><p>Map memory physical address to cached virtual address fast</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Language</strong></p></th>
+<th class="head"><p><strong>Function Prototype</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>C</strong></p></td>
+<td><p><cite>AX_VOID *AXCL_SYS_MmapCacheFast(AX_U64 phyaddr, AX_U32 size);</cite></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>python</strong></p></td>
+<td><p><cite>vir_addr = axcl.sys.mmap_cache_fast(phy_addr, size)</cite></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>phy_addr</strong> (<em>int</em>) – memory physical address</p></li>
+<li><p><strong>size</strong> (<em>int</em>) – memory size</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>vir_addr</strong> (<em>int</em>) - virtual address</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="axcl.sys.axcl_sys.munmap">
+<span class="sig-name descname"><span class="pre">munmap</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vir_addr</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="headerlink" href="#axcl.sys.axcl_sys.munmap" title="Link to this definition">#</a></dt>
+<dd><p>Unmap memory virtual address</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Language</strong></p></th>
+<th class="head"><p><strong>Function Prototype</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>C</strong></p></td>
+<td><p><cite>AX_S32 AXCL_SYS_Munmap(AX_VOID *pviraddr, AX_U32 size);</cite></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>python</strong></p></td>
+<td><p><cite>ret = axcl.sys.munmap(vir_addr, size)</cite></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>vir_addr</strong> (<em>int</em>) – memory virtual address</p></li>
+<li><p><strong>size</strong> (<em>int</em>) – memorysize</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>ret</strong> (<em>int</em>) - 0 indicates success, otherwise failure</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="axcl.sys.axcl_sys.mflush_cache">
+<span class="sig-name descname"><span class="pre">mflush_cache</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">phy_addr</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vir_addr</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="headerlink" href="#axcl.sys.axcl_sys.mflush_cache" title="Link to this definition">#</a></dt>
+<dd><p>Flush cached memory</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Language</strong></p></th>
+<th class="head"><p><strong>Function Prototype</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>C</strong></p></td>
+<td><p><cite>AX_S32 AXCL_SYS_MflushCache(AX_U64 phyaddr, AX_VOID *pviraddr, AX_U32 size);</cite></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>python</strong></p></td>
+<td><p><cite>ret = axcl.sys.mflush_cache(phy_addr, vir_addr, size)</cite></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>phy_addr</strong> (<em>int</em>) – memory physical address</p></li>
+<li><p><strong>vir_addr</strong> (<em>int</em>) – memory virtual address</p></li>
+<li><p><strong>size</strong> (<em>int</em>) – memory size</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>ret</strong> (<em>int</em>) - 0 indicates success, otherwise failure</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="axcl.sys.axcl_sys.minvalidate_cache">
+<span class="sig-name descname"><span class="pre">minvalidate_cache</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">phy_addr</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vir_addr</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="headerlink" href="#axcl.sys.axcl_sys.minvalidate_cache" title="Link to this definition">#</a></dt>
+<dd><p>Flush cached memory</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Language</strong></p></th>
+<th class="head"><p><strong>Function Prototype</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>C</strong></p></td>
+<td><p><cite>AX_S32 AXCL_SYS_MinvalidateCache(AX_U64 phyaddr, AX_VOID *pviraddr, AX_U32 size);</cite></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>python</strong></p></td>
+<td><p><cite>ret = axcl.sys.minvalidate_cache(phy_addr, vir_addr, size)</cite></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>phy_addr</strong> (<em>int</em>) – memory physical address</p></li>
+<li><p><strong>vir_addr</strong> (<em>int</em>) – memory virtual address</p></li>
+<li><p><strong>size</strong> (<em>int</em>) – memory size</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>ret</strong> (<em>int</em>) - 0 indicates success, otherwise failure</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="axcl.sys.axcl_sys.mem_get_block_info_by_phy">
+<span class="sig-name descname"><span class="pre">mem_get_block_info_by_phy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">phy_addr</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#axcl.sys.axcl_sys.mem_get_block_info_by_phy" title="Link to this definition">#</a></dt>
+<dd><p>Get cmm memory block info by physical address</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Language</strong></p></th>
+<th class="head"><p><strong>Function Prototype</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>C</strong></p></td>
+<td><p><cite>AX_S32 AXCL_SYS_MemGetBlockInfoByPhy(AX_U64 phyaddr, AX_S32 *pmemType, AX_VOID **pviraddr, AX_U32 *pblockSize);</cite></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>python</strong></p></td>
+<td><p><cite>mem_type, vir_addr, block_size, ret = axcl.sys.mem_get_block_info_by_phy(phy_addr)</cite></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>phy_addr</strong> (<em>int</em>) – memory physical address</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><p>tuple[int, int, int, int]</p>
+<ul class="simple">
+<li><p><strong>mem_type</strong> (<em>int</em>) - cmm memory type</p></li>
+<li><p><strong>vir_addr</strong> (<em>int</em>) - cmm memory virtual address</p></li>
+<li><p><strong>block_size</strong> (<em>int</em>) - cmm memory block size</p></li>
+<li><p><strong>ret</strong> (<em>int</em>) - 0 indicates success, otherwise failure</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="axcl.sys.axcl_sys.mem_get_block_info_by_virt">
+<span class="sig-name descname"><span class="pre">mem_get_block_info_by_virt</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vir_addr</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#axcl.sys.axcl_sys.mem_get_block_info_by_virt" title="Link to this definition">#</a></dt>
+<dd><p>Get cmm memory block info by virtual address</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Language</strong></p></th>
+<th class="head"><p><strong>Function Prototype</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>C</strong></p></td>
+<td><p><cite>AX_S32 AXCL_SYS_MemGetBlockInfoByVirt(AX_VOID *pviraddr, AX_U64 *phyaddr, AX_S32 *pmemType);</cite></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>python</strong></p></td>
+<td><p><cite>phy_addr, mem_type, ret = axcl.sys.mem_get_block_info_by_virt(vir_addr)</cite></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>vir_addr</strong> (<em>int</em>) – memory virtual address</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><p>tuple[int, int, int]</p>
+<ul class="simple">
+<li><p><strong>phy_addr</strong> (<em>int</em>) - cmm memory physical address</p></li>
+<li><p><strong>mem_type</strong> (<em>int</em>) - cmm memory type</p></li>
+<li><p><strong>ret</strong> (<em>int</em>) - 0 indicates success, otherwise failure</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="axcl.sys.axcl_sys.mem_get_partition_info">
+<span class="sig-name descname"><span class="pre">mem_get_partition_info</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">list</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#axcl.sys.axcl_sys.mem_get_partition_info" title="Link to this definition">#</a></dt>
+<dd><p>Get cmm partition information</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Language</strong></p></th>
+<th class="head"><p><strong>Function Prototype</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>C</strong></p></td>
+<td><p><cite>AX_S32 AXCL_SYS_MemGetPartitionInfo(AX_CMM_PARTITION_INFO_T *pCmmPartitionInfo);</cite></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>python</strong></p></td>
+<td><p><cite>cmm_part_info, ret = axcl.sys.mem_get_partition_info()</cite></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p><p>tuple[list, int]</p>
+<ul class="simple">
+<li><p><strong>cmm_part_info</strong> (<em>list</em>) - list of cmm partition information <a class="reference internal" href="#axcl.sys.axcl_sys_type.AX_PARTITION_INFO_T" title="axcl.sys.axcl_sys_type.AX_PARTITION_INFO_T"><code class="xref py py-class docutils literal notranslate"><span class="pre">AX_PARTITION_INFO_T</span></code></a></p></li>
+<li><p><strong>ret</strong> (<em>int</em>) - 0 indicates success, otherwise failure</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="axcl.sys.axcl_sys.mem_set_config">
+<span class="sig-name descname"><span class="pre">mem_set_config</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mod_info</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">partition_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="headerlink" href="#axcl.sys.axcl_sys.mem_set_config" title="Link to this definition">#</a></dt>
+<dd><p>Set modual cmm configure</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Language</strong></p></th>
+<th class="head"><p><strong>Function Prototype</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>C</strong></p></td>
+<td><p><cite>AX_S32 AXCL_SYS_MemSetConfig(const AX_MOD_INFO_T *pModInfo, const AX_S8 *pPartitionName);</cite></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>python</strong></p></td>
+<td><p><cite>ret = axcl.sys.mem_set_config(mod_info, partition_name)</cite></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>mod_info</strong> (<em>dict</em>) – <a class="reference internal" href="pyAXCL.html#axcl.ax_global_type.AX_MOD_INFO_T" title="axcl.ax_global_type.AX_MOD_INFO_T"><code class="xref py py-class docutils literal notranslate"><span class="pre">AX_MOD_INFO_T</span></code></a></p></li>
+<li><p><strong>partition_name</strong> (<em>str</em>) – partition name</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>ret</strong> (<em>int</em>) - 0 indicates success, otherwise failure</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="axcl.sys.axcl_sys.mem_get_config">
+<span class="sig-name descname"><span class="pre">mem_get_config</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mod_info</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#axcl.sys.axcl_sys.mem_get_config" title="Link to this definition">#</a></dt>
+<dd><p>Get cmm configure by modual</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Language</strong></p></th>
+<th class="head"><p><strong>Function Prototype</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>C</strong></p></td>
+<td><p><cite>AX_S32 AXCL_SYS_MemGetConfig(const AX_MOD_INFO_T *pModInfo, AX_S8 *pPartitionName);</cite></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>python</strong></p></td>
+<td><p><cite>partition_name, ret = axcl.sys.mem_get_config(mod_info)</cite></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>mod_info</strong> (<em>dict</em>) – <a class="reference internal" href="pyAXCL.html#axcl.ax_global_type.AX_MOD_INFO_T" title="axcl.ax_global_type.AX_MOD_INFO_T"><code class="xref py py-class docutils literal notranslate"><span class="pre">AX_MOD_INFO_T</span></code></a></p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><p>tuple[str, int]</p>
+<ul class="simple">
+<li><p><strong>partition_name</strong> (<em>str</em>) - partition name</p></li>
+<li><p><strong>ret</strong> (<em>int</em>) - 0 indicates success, otherwise failure</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="axcl.sys.axcl_sys.mem_query_status">
+<span class="sig-name descname"><span class="pre">mem_query_status</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">dict</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#axcl.sys.axcl_sys.mem_query_status" title="Link to this definition">#</a></dt>
+<dd><p>Query cmm status</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Language</strong></p></th>
+<th class="head"><p><strong>Function Prototype</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>C</strong></p></td>
+<td><p><cite>AX_S32 AXCL_SYS_MemQueryStatus(AX_CMM_STATUS_T *pCmmStatus);</cite></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>python</strong></p></td>
+<td><p><cite>cmm_status, ret = axcl.sys.mem_query_status()</cite></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p><p>tuple[dict, int]</p>
+<ul class="simple">
+<li><p><strong>cmm_status</strong> (<em>dict</em>) - cmm status <a class="reference internal" href="#axcl.sys.axcl_sys_type.AX_CMM_STATUS_T" title="axcl.sys.axcl_sys_type.AX_CMM_STATUS_T"><code class="xref py py-class docutils literal notranslate"><span class="pre">AX_CMM_STATUS_T</span></code></a></p></li>
+<li><p><strong>ret</strong> (<em>int</em>) - 0 indicates success, otherwise failure</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="axcl.sys.axcl_sys.link">
+<span class="sig-name descname"><span class="pre">link</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">src_mod_info</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dst_mod_info</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="headerlink" href="#axcl.sys.axcl_sys.link" title="Link to this definition">#</a></dt>
+<dd><p>Link moduals</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Language</strong></p></th>
+<th class="head"><p><strong>Function Prototype</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>C</strong></p></td>
+<td><p><cite>AX_S32 AXCL_SYS_Link(const AX_MOD_INFO_T *pSrc, const AX_MOD_INFO_T *pDest);</cite></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>python</strong></p></td>
+<td><p><cite>ret = axcl.sys.link(src_mod_info, dst_mod_info)</cite></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>src_mod_info</strong> (<em>dict</em>) – <a class="reference internal" href="pyAXCL.html#axcl.ax_global_type.AX_MOD_INFO_T" title="axcl.ax_global_type.AX_MOD_INFO_T"><code class="xref py py-class docutils literal notranslate"><span class="pre">AX_MOD_INFO_T</span></code></a></p></li>
+<li><p><strong>dst_mod_info</strong> (<em>dict</em>) – <a class="reference internal" href="pyAXCL.html#axcl.ax_global_type.AX_MOD_INFO_T" title="axcl.ax_global_type.AX_MOD_INFO_T"><code class="xref py py-class docutils literal notranslate"><span class="pre">AX_MOD_INFO_T</span></code></a></p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>ret</strong> (<em>int</em>) - 0 indicates success, otherwise failure</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="axcl.sys.axcl_sys.unlink">
+<span class="sig-name descname"><span class="pre">unlink</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">src_mod_info</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dst_mod_info</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="headerlink" href="#axcl.sys.axcl_sys.unlink" title="Link to this definition">#</a></dt>
+<dd><p>Unlink moduals</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Language</strong></p></th>
+<th class="head"><p><strong>Function Prototype</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>C</strong></p></td>
+<td><p><cite>AX_S32 AXCL_SYS_UnLink(const AX_MOD_INFO_T *pSrc, const AX_MOD_INFO_T *pDest);</cite></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>python</strong></p></td>
+<td><p><cite>ret = axcl.sys.unlink(src_mod_info, dst_mod_info)</cite></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>src_mod_info</strong> (<em>dict</em>) – <a class="reference internal" href="pyAXCL.html#axcl.ax_global_type.AX_MOD_INFO_T" title="axcl.ax_global_type.AX_MOD_INFO_T"><code class="xref py py-class docutils literal notranslate"><span class="pre">AX_MOD_INFO_T</span></code></a></p></li>
+<li><p><strong>dst_mod_info</strong> (<em>dict</em>) – <a class="reference internal" href="pyAXCL.html#axcl.ax_global_type.AX_MOD_INFO_T" title="axcl.ax_global_type.AX_MOD_INFO_T"><code class="xref py py-class docutils literal notranslate"><span class="pre">AX_MOD_INFO_T</span></code></a></p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>ret</strong> (<em>int</em>) - 0 indicates success, otherwise failure</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="axcl.sys.axcl_sys.get_link_by_dest">
+<span class="sig-name descname"><span class="pre">get_link_by_dest</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dst_mod_info</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">dict</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#axcl.sys.axcl_sys.get_link_by_dest" title="Link to this definition">#</a></dt>
+<dd><p>Get link source modual information by destination modual</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Language</strong></p></th>
+<th class="head"><p><strong>Function Prototype</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>C</strong></p></td>
+<td><p><cite>AX_S32 AXCL_SYS_GetLinkByDest(const AX_MOD_INFO_T *pDest, AX_MOD_INFO_T *pSrc);</cite></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>python</strong></p></td>
+<td><p><cite>src_mod_info, ret = axcl.sys.get_link_by_dest(dst_mod_info)</cite></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>dst_mod_info</strong> (<em>dict</em>) – <a class="reference internal" href="pyAXCL.html#axcl.ax_global_type.AX_MOD_INFO_T" title="axcl.ax_global_type.AX_MOD_INFO_T"><code class="xref py py-class docutils literal notranslate"><span class="pre">AX_MOD_INFO_T</span></code></a></p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>src_mod_info</strong> (<em>dict</em>) - <a class="reference internal" href="pyAXCL.html#axcl.ax_global_type.AX_MOD_INFO_T" title="axcl.ax_global_type.AX_MOD_INFO_T"><code class="xref py py-class docutils literal notranslate"><span class="pre">AX_MOD_INFO_T</span></code></a></p></li>
+<li><p><strong>ret</strong> (<em>int</em>) - 0 indicates success, otherwise failure</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="axcl.sys.axcl_sys.get_link_by_src">
+<span class="sig-name descname"><span class="pre">get_link_by_src</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">src_mod_info</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">list</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#axcl.sys.axcl_sys.get_link_by_src" title="Link to this definition">#</a></dt>
+<dd><p>Get link destination modual information by source modual</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Language</strong></p></th>
+<th class="head"><p><strong>Function Prototype</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>C</strong></p></td>
+<td><p><cite>AX_S32 AXCL_SYS_GetLinkBySrc(const AX_MOD_INFO_T *pSrc, AX_LINK_DEST_T *pLinkDest);</cite></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>python</strong></p></td>
+<td><p><cite>dst_link, ret = axcl.sys.get_link_by_src(src_mod_info)</cite></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>src_mod_info</strong> (<em>dict</em>) – <a class="reference internal" href="pyAXCL.html#axcl.ax_global_type.AX_MOD_INFO_T" title="axcl.ax_global_type.AX_MOD_INFO_T"><code class="xref py py-class docutils literal notranslate"><span class="pre">AX_MOD_INFO_T</span></code></a></p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>dst_link</strong> (<em>list</em>) - list of <a class="reference internal" href="pyAXCL.html#axcl.ax_global_type.AX_MOD_INFO_T" title="axcl.ax_global_type.AX_MOD_INFO_T"><code class="xref py py-class docutils literal notranslate"><span class="pre">AX_MOD_INFO_T</span></code></a></p></li>
+<li><p><strong>ret</strong> (<em>int</em>) - 0 indicates success, otherwise failure</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="axcl.sys.axcl_sys.get_cur_pts">
+<span class="sig-name descname"><span class="pre">get_cur_pts</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#axcl.sys.axcl_sys.get_cur_pts" title="Link to this definition">#</a></dt>
+<dd><p>Get current pts</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Language</strong></p></th>
+<th class="head"><p><strong>Function Prototype</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>C</strong></p></td>
+<td><p><cite>AX_S32 AXCL_SYS_GetCurPTS(AX_U64 *pu64CurPTS);</cite></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>python</strong></p></td>
+<td><p><cite>cur_pts, ret = axcl.sys.get_cur_pts()</cite></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p><p>tuple[int, int]</p>
+<ul class="simple">
+<li><p><strong>cur_pts</strong> (<em>int</em>) - current pts</p></li>
+<li><p><strong>ret</strong> (<em>int</em>) - 0 indicates success, otherwise failure</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="axcl.sys.axcl_sys.init_pts_base">
+<span class="sig-name descname"><span class="pre">init_pts_base</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pts_base</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="headerlink" href="#axcl.sys.axcl_sys.init_pts_base" title="Link to this definition">#</a></dt>
+<dd><p>Init pts base</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Language</strong></p></th>
+<th class="head"><p><strong>Function Prototype</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>C</strong></p></td>
+<td><p><cite>AX_S32 AXCL_SYS_InitPTSBase(AX_U64 u64PTSBase);</cite></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>python</strong></p></td>
+<td><p><cite>ret = axcl.sys.init_pts_base(pts_base)</cite></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>pts_base</strong> (<em>int</em>) – pts base</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>ret</strong> (<em>int</em>) - 0 indicates success, otherwise failure</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="axcl.sys.axcl_sys.sync_pts">
+<span class="sig-name descname"><span class="pre">sync_pts</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pts_base</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="headerlink" href="#axcl.sys.axcl_sys.sync_pts" title="Link to this definition">#</a></dt>
+<dd><p>Init pts base</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Language</strong></p></th>
+<th class="head"><p><strong>Function Prototype</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>C</strong></p></td>
+<td><p><cite>AX_S32 AXCL_SYS_SyncPTS(AX_U64 u64PTSBase);</cite></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>python</strong></p></td>
+<td><p><cite>ret = axcl.sys.sync_pts(pts_base)</cite></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>pts_base</strong> (<em>int</em>) – pts base</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>ret</strong> (<em>int</em>) - 0 indicates success, otherwise failure</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="axcl.sys.axcl_sys.get_chip_type">
+<span class="sig-name descname"><span class="pre">get_chip_type</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="headerlink" href="#axcl.sys.axcl_sys.get_chip_type" title="Link to this definition">#</a></dt>
+<dd><p>Get chip type</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Language</strong></p></th>
+<th class="head"><p><strong>Function Prototype</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>C</strong></p></td>
+<td><p><cite>AX_CHIP_TYPE_E AXCL_SYS_GetChipType(AX_VOID);</cite></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>python</strong></p></td>
+<td><p><cite>chip_type = axcl.sys.get_chip_type()</cite></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>chip_type</strong> (<em>int</em>) - chip type: <a class="reference internal" href="#axcl.sys.axcl_sys_type.AX_CHIP_TYPE_E" title="axcl.sys.axcl_sys_type.AX_CHIP_TYPE_E"><code class="xref py py-class docutils literal notranslate"><span class="pre">AX_CHIP_TYPE_E</span></code></a>,</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-axcl.sys.axcl_sys_type">
+<span id="types"></span><h2><span class="section-number">12.2.2. </span>types<a class="headerlink" href="#module-axcl.sys.axcl_sys_type" title="Link to this heading">#</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="axcl.sys.axcl_sys_type.AX_PARTITION_INFO_T">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">AX_PARTITION_INFO_T</span></span><a class="headerlink" href="#axcl.sys.axcl_sys_type.AX_PARTITION_INFO_T" title="Link to this definition">#</a></dt>
+<dd><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">dict_partition_info</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;phy_addr&quot;</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+    <span class="s2">&quot;size_kbyte&quot;</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+    <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="nb">str</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="axcl.sys.axcl_sys_type.AX_CMM_PARTITION_INFO_T">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">AX_CMM_PARTITION_INFO_T</span></span><a class="headerlink" href="#axcl.sys.axcl_sys_type.AX_CMM_PARTITION_INFO_T" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="axcl.sys.axcl_sys_type.AX_CMM_STATUS_T">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">AX_CMM_STATUS_T</span></span><a class="headerlink" href="#axcl.sys.axcl_sys_type.AX_CMM_STATUS_T" title="Link to this definition">#</a></dt>
+<dd><pre class="literal-block">dict_cmm_status = {
+    &quot;total_size&quot;: int,
+    &quot;remain_size&quot;: int,
+    &quot;block_cnt&quot;: int,
+    &quot;partition&quot;: list of <a class="reference internal" href="#axcl.sys.axcl_sys_type.AX_PARTITION_INFO_T" title="axcl.sys.axcl_sys_type.AX_PARTITION_INFO_T"><code class="xref py py-class docutils literal notranslate"><span class="pre">AX_PARTITION_INFO_T</span></code></a>
+}</pre>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="axcl.sys.axcl_sys_type.AX_POOL_CACHE_MODE_E">
+<span class="sig-name descname"><span class="pre">AX_POOL_CACHE_MODE_E</span></span><a class="headerlink" href="#axcl.sys.axcl_sys_type.AX_POOL_CACHE_MODE_E" title="Link to this definition">#</a></dt>
+<dd><p>pool cache mode</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">POOL_CACHE_MODE_NONCACHE</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">POOL_CACHE_MODE_CACHED</span>   <span class="o">=</span> <span class="mi">1</span>
+<span class="n">POOL_CACHE_MODE_BUTT</span>     <span class="o">=</span> <span class="mi">2</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="axcl.sys.axcl_sys_type.AX_POOL_SOURCE_E">
+<span class="sig-name descname"><span class="pre">AX_POOL_SOURCE_E</span></span><a class="headerlink" href="#axcl.sys.axcl_sys_type.AX_POOL_SOURCE_E" title="Link to this definition">#</a></dt>
+<dd><p>pool source</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">POOL_SOURCE_COMMON</span>  <span class="o">=</span> <span class="mi">0</span>
+<span class="n">POOL_SOURCE_PRIVATE</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">POOL_SOURCE_USER</span>    <span class="o">=</span> <span class="mi">2</span>
+<span class="n">POOL_SOURCE_BUTT</span>    <span class="o">=</span> <span class="mi">3</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="axcl.sys.axcl_sys_type.AX_POOL_CONFIG_T">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">AX_POOL_CONFIG_T</span></span><a class="headerlink" href="#axcl.sys.axcl_sys_type.AX_POOL_CONFIG_T" title="Link to this definition">#</a></dt>
+<dd><pre class="literal-block">dict_pool_config = {
+    &quot;meta_size&quot;: int,
+    &quot;blk_size&quot;: int,
+    &quot;blk_cnt&quot;: int,
+    &quot;is_merge_mode&quot;: bool,
+    &quot;cache_mode&quot;: <a class="reference internal" href="#axcl.sys.axcl_sys_type.AX_POOL_CACHE_MODE_E" title="axcl.sys.axcl_sys_type.AX_POOL_CACHE_MODE_E"><code class="xref py py-class docutils literal notranslate"><span class="pre">AX_POOL_CACHE_MODE_E</span></code></a>,
+    &quot;partition_name&quot;: str,
+    &quot;pool_name&quot;: str
+}</pre>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="axcl.sys.axcl_sys_type.AX_POOL_FLOORPLAN_T">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">AX_POOL_FLOORPLAN_T</span></span><a class="headerlink" href="#axcl.sys.axcl_sys_type.AX_POOL_FLOORPLAN_T" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="axcl.sys.axcl_sys_type.AX_CHIP_TYPE_E">
+<span class="sig-name descname"><span class="pre">AX_CHIP_TYPE_E</span></span><a class="headerlink" href="#axcl.sys.axcl_sys_type.AX_CHIP_TYPE_E" title="Link to this definition">#</a></dt>
+<dd><p>chip type</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">NONE_CHIP_TYPE</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">AX650A_CHIP</span>    <span class="o">=</span> <span class="mi">1</span>
+<span class="n">AX650N_CHIP</span>    <span class="o">=</span> <span class="mi">2</span>
+<span class="n">AX650C_CHIP</span>    <span class="o">=</span> <span class="mi">3</span>
+<span class="n">AX750_CHIP</span>     <span class="o">=</span> <span class="mi">4</span>
+<span class="n">AX650_CHIP_MAX</span> <span class="o">=</span> <span class="mi">5</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="pyAXCL.rt.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">12.1. </span>axcl.rt</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="pyAXCL.pool.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">12.3. </span>axcl.pool</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-axcl.sys.axcl_sys">12.2.1. api</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.sys.axcl_sys.init"><code class="docutils literal notranslate"><span class="pre">init()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.sys.axcl_sys.deinit"><code class="docutils literal notranslate"><span class="pre">deinit()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.sys.axcl_sys.mem_alloc"><code class="docutils literal notranslate"><span class="pre">mem_alloc()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.sys.axcl_sys.mem_alloc_cached"><code class="docutils literal notranslate"><span class="pre">mem_alloc_cached()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.sys.axcl_sys.mem_free"><code class="docutils literal notranslate"><span class="pre">mem_free()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.sys.axcl_sys.mmap"><code class="docutils literal notranslate"><span class="pre">mmap()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.sys.axcl_sys.mmap_cache"><code class="docutils literal notranslate"><span class="pre">mmap_cache()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.sys.axcl_sys.mmap_fast"><code class="docutils literal notranslate"><span class="pre">mmap_fast()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.sys.axcl_sys.mmap_cache_fast"><code class="docutils literal notranslate"><span class="pre">mmap_cache_fast()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.sys.axcl_sys.munmap"><code class="docutils literal notranslate"><span class="pre">munmap()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.sys.axcl_sys.mflush_cache"><code class="docutils literal notranslate"><span class="pre">mflush_cache()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.sys.axcl_sys.minvalidate_cache"><code class="docutils literal notranslate"><span class="pre">minvalidate_cache()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.sys.axcl_sys.mem_get_block_info_by_phy"><code class="docutils literal notranslate"><span class="pre">mem_get_block_info_by_phy()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.sys.axcl_sys.mem_get_block_info_by_virt"><code class="docutils literal notranslate"><span class="pre">mem_get_block_info_by_virt()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.sys.axcl_sys.mem_get_partition_info"><code class="docutils literal notranslate"><span class="pre">mem_get_partition_info()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.sys.axcl_sys.mem_set_config"><code class="docutils literal notranslate"><span class="pre">mem_set_config()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.sys.axcl_sys.mem_get_config"><code class="docutils literal notranslate"><span class="pre">mem_get_config()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.sys.axcl_sys.mem_query_status"><code class="docutils literal notranslate"><span class="pre">mem_query_status()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.sys.axcl_sys.link"><code class="docutils literal notranslate"><span class="pre">link()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.sys.axcl_sys.unlink"><code class="docutils literal notranslate"><span class="pre">unlink()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.sys.axcl_sys.get_link_by_dest"><code class="docutils literal notranslate"><span class="pre">get_link_by_dest()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.sys.axcl_sys.get_link_by_src"><code class="docutils literal notranslate"><span class="pre">get_link_by_src()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.sys.axcl_sys.get_cur_pts"><code class="docutils literal notranslate"><span class="pre">get_cur_pts()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.sys.axcl_sys.init_pts_base"><code class="docutils literal notranslate"><span class="pre">init_pts_base()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.sys.axcl_sys.sync_pts"><code class="docutils literal notranslate"><span class="pre">sync_pts()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.sys.axcl_sys.get_chip_type"><code class="docutils literal notranslate"><span class="pre">get_chip_type()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-axcl.sys.axcl_sys_type">12.2.2. types</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.sys.axcl_sys_type.AX_PARTITION_INFO_T"><code class="docutils literal notranslate"><span class="pre">AX_PARTITION_INFO_T</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.sys.axcl_sys_type.AX_CMM_PARTITION_INFO_T"><code class="docutils literal notranslate"><span class="pre">AX_CMM_PARTITION_INFO_T</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.sys.axcl_sys_type.AX_CMM_STATUS_T"><code class="docutils literal notranslate"><span class="pre">AX_CMM_STATUS_T</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.sys.axcl_sys_type.AX_POOL_CACHE_MODE_E"><code class="docutils literal notranslate"><span class="pre">AX_POOL_CACHE_MODE_E</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.sys.axcl_sys_type.AX_POOL_SOURCE_E"><code class="docutils literal notranslate"><span class="pre">AX_POOL_SOURCE_E</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.sys.axcl_sys_type.AX_POOL_CONFIG_T"><code class="docutils literal notranslate"><span class="pre">AX_POOL_CONFIG_T</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.sys.axcl_sys_type.AX_POOL_FLOORPLAN_T"><code class="docutils literal notranslate"><span class="pre">AX_POOL_FLOORPLAN_T</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.sys.axcl_sys_type.AX_CHIP_TYPE_E"><code class="docutils literal notranslate"><span class="pre">AX_CHIP_TYPE_E</span></code></a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By kalcohol
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024, AXERA Semiconductor Co., Ltd..
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

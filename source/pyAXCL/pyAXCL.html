@@ -1,0 +1,1346 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>12. pyAXCL &#8212; AXCL V3.6.5 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../_static/documentation_options.js?v=6e648b6a"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'pyAXCL/pyAXCL';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="12.1. axcl.rt" href="pyAXCL.rt.html" />
+    <link rel="prev" title="11. FFmpeg" href="../doc_guide_ffmpeg.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">AXCL V3.6.5 documentation</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">目录</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../doc_update_info.html">1. 版本信息</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../doc_introduction.html">2. 简介</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../doc_guide_setup.html">3. 驱动安装</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../doc_guide_axcl_smi.html">4. AXCL-SMI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../doc_guide_quick_start.html">5. 快速上手</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../doc_guide_npu_samples.html">6. NPU 示例</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../doc_guide_npu_benchmark.html">7. NPU Benchmark</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../doc_guide_samples.html">8. SDK Samples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../doc_guide_axcl_api.html">9. SDK API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../doc_guide_compile.html">10. SDK 编译</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../doc_guide_ffmpeg.html">11. FFmpeg</a></li>
+<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">12. pyAXCL</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="pyAXCL.rt.html">12.1. axcl.rt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pyAXCL.sys.html">12.2. axcl.sys</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pyAXCL.pool.html">12.3. axcl.pool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pyAXCL.npu.html">12.4. axcl.npu</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pyAXCL.vdec.html">12.5. axcl.vdec</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pyAXCL.venc.html">12.6. axcl.venc</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pyAXCL.ivps.html">12.7. axcl.ivps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pyAXCL.dmadim.html">12.8. axcl.dmadim</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pyAXCL.ive.html">12.9. axcl.ive</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pyAXCL.utils.html">12.10. axcl.utils</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../doc_guide_faq.html">13. 常见问题</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/pyAXCL/pyAXCL.rst" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.rst</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>pyAXCL</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#requirement">12.11. Requirement</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#install">12.12. Install</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-axcl.axcl">12.13. axcl</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.axcl.init"><code class="docutils literal notranslate"><span class="pre">init()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.axcl.finalize"><code class="docutils literal notranslate"><span class="pre">finalize()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.axcl.set_log_level"><code class="docutils literal notranslate"><span class="pre">set_log_level()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.axcl.app_log"><code class="docutils literal notranslate"><span class="pre">app_log()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-axcl.ax_codec_comm">12.14. axcl.ax_codec_comm</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.ax_codec_comm.AX_FRAME_TYPE_E"><code class="docutils literal notranslate"><span class="pre">AX_FRAME_TYPE_E</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-axcl.ax_global_type">12.15. axcl.ax_global_type</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.ax_global_type.AX_FRAME_RATE_CTRL_T"><code class="docutils literal notranslate"><span class="pre">AX_FRAME_RATE_CTRL_T</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.ax_global_type.AX_CHIP_TYPE_E"><code class="docutils literal notranslate"><span class="pre">AX_CHIP_TYPE_E</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.ax_global_type.AX_PAYLOAD_TYPE_E"><code class="docutils literal notranslate"><span class="pre">AX_PAYLOAD_TYPE_E</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.ax_global_type.AX_VSCAN_FORMAT_E"><code class="docutils literal notranslate"><span class="pre">AX_VSCAN_FORMAT_E</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.ax_global_type.AX_COMPRESS_MODE_E"><code class="docutils literal notranslate"><span class="pre">AX_COMPRESS_MODE_E</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.ax_global_type.AX_FRAME_COMPRESS_INFO_T"><code class="docutils literal notranslate"><span class="pre">AX_FRAME_COMPRESS_INFO_T</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.ax_global_type.AX_DYNAMIC_RANGE_E"><code class="docutils literal notranslate"><span class="pre">AX_DYNAMIC_RANGE_E</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.ax_global_type.AX_COLOR_GAMUT_E"><code class="docutils literal notranslate"><span class="pre">AX_COLOR_GAMUT_E</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.ax_global_type.AX_IMG_FORMAT_E"><code class="docutils literal notranslate"><span class="pre">AX_IMG_FORMAT_E</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.ax_global_type.AX_FRAME_FLAG_E"><code class="docutils literal notranslate"><span class="pre">AX_FRAME_FLAG_E</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.ax_global_type.AX_VIDEO_FRAME_T"><code class="docutils literal notranslate"><span class="pre">AX_VIDEO_FRAME_T</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.ax_global_type.AX_MOD_ID_E"><code class="docutils literal notranslate"><span class="pre">AX_MOD_ID_E</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.ax_global_type.AX_LINK_MODE_E"><code class="docutils literal notranslate"><span class="pre">AX_LINK_MODE_E</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.ax_global_type.AX_AUDIO_FRAME_T"><code class="docutils literal notranslate"><span class="pre">AX_AUDIO_FRAME_T</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.ax_global_type.AX_AUDIO_FRAME_INFO_T"><code class="docutils literal notranslate"><span class="pre">AX_AUDIO_FRAME_INFO_T</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.ax_global_type.AX_VIDEO_FRAME_INFO_T"><code class="docutils literal notranslate"><span class="pre">AX_VIDEO_FRAME_INFO_T</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.ax_global_type.AX_SYS_CLK_LEVEL_E"><code class="docutils literal notranslate"><span class="pre">AX_SYS_CLK_LEVEL_E</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.ax_global_type.AX_SYS_CLK_ID_E"><code class="docutils literal notranslate"><span class="pre">AX_SYS_CLK_ID_E</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.ax_global_type.AX_MOD_INFO_T"><code class="docutils literal notranslate"><span class="pre">AX_MOD_INFO_T</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.ax_global_type.AX_LINK_DEST_T"><code class="docutils literal notranslate"><span class="pre">AX_LINK_DEST_T</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.ax_global_type.AX_MEMORY_SOURCE_E"><code class="docutils literal notranslate"><span class="pre">AX_MEMORY_SOURCE_E</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.ax_global_type.AX_MEMORY_ADDR_T"><code class="docutils literal notranslate"><span class="pre">AX_MEMORY_ADDR_T</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.ax_global_type.AX_OSD_BMP_ATTR_T"><code class="docutils literal notranslate"><span class="pre">AX_OSD_BMP_ATTR_T</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.ax_global_type.AX_ERR_CODE_E"><code class="docutils literal notranslate"><span class="pre">AX_ERR_CODE_E</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.ax_global_type.AX_POINT_T"><code class="docutils literal notranslate"><span class="pre">AX_POINT_T</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.ax_global_type.AX_BGCOLOR_T"><code class="docutils literal notranslate"><span class="pre">AX_BGCOLOR_T</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.ax_global_type.AX_COLORKEY_T"><code class="docutils literal notranslate"><span class="pre">AX_COLORKEY_T</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.ax_global_type.AX_BITCOLOR_T"><code class="docutils literal notranslate"><span class="pre">AX_BITCOLOR_T</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.ax_global_type.AX_OVERLAY_T"><code class="docutils literal notranslate"><span class="pre">AX_OVERLAY_T</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.ax_global_type.AX_PYRA_MODE_E"><code class="docutils literal notranslate"><span class="pre">AX_PYRA_MODE_E</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.ax_global_type.AX_PYRA_FRAME_T"><code class="docutils literal notranslate"><span class="pre">AX_PYRA_FRAME_T</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.ax_global_type.AX_GDC_MODE_E"><code class="docutils literal notranslate"><span class="pre">AX_GDC_MODE_E</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.ax_global_type.AX_VDSP_MODE_E"><code class="docutils literal notranslate"><span class="pre">AX_VDSP_MODE_E</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.ax_global_type.AX_WARP_ENGINE_E"><code class="docutils literal notranslate"><span class="pre">AX_WARP_ENGINE_E</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.ax_global_type.AX_WARP_MODE_U"><code class="docutils literal notranslate"><span class="pre">AX_WARP_MODE_U</span></code></a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="pyaxcl">
+<h1><span class="section-number">12. </span>pyAXCL<a class="headerlink" href="#pyaxcl" title="Link to this heading">#</a></h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="pyAXCL.rt.html">12.1. axcl.rt</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pyAXCL.sys.html">12.2. axcl.sys</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pyAXCL.pool.html">12.3. axcl.pool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pyAXCL.npu.html">12.4. axcl.npu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pyAXCL.vdec.html">12.5. axcl.vdec</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pyAXCL.venc.html">12.6. axcl.venc</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pyAXCL.ivps.html">12.7. axcl.ivps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pyAXCL.dmadim.html">12.8. axcl.dmadim</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pyAXCL.ive.html">12.9. axcl.ive</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pyAXCL.utils.html">12.10. axcl.utils</a></li>
+</ul>
+</div>
+<section id="requirement">
+<h2><span class="section-number">12.11. </span>Requirement<a class="headerlink" href="#requirement" title="Link to this heading">#</a></h2>
+<p>python &gt;= 3.9 64bits (Linux)</p>
+</section>
+<section id="install">
+<h2><span class="section-number">12.12. </span>Install<a class="headerlink" href="#install" title="Link to this heading">#</a></h2>
+<ol class="arabic">
+<li><p>Extract the <code class="docutils literal notranslate"><span class="pre">pyAXCL-X.YY.Z-py3-none-any.whl</span></code> file from <code class="docutils literal notranslate"><span class="pre">axcl/out/python/</span></code> directory in <code class="docutils literal notranslate"><span class="pre">axcl.tgz</span></code> SDK.</p></li>
+<li><p>install:  <code class="docutils literal notranslate"><span class="pre">pip3</span> <span class="pre">install</span> <span class="pre">pyAXCL-X.YY.Z-py3-none-any.whl</span></code>.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>pip3<span class="w"> </span>install<span class="w"> </span>pyAXCL-X.YY.Z-py3-none-any.whl
+$<span class="w"> </span>pip3<span class="w"> </span>show<span class="w"> </span>pyAXCL
+</pre></div>
+</div>
+</li>
+<li><p>Open the Python 3 console to verify that the installation was successful.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">Python</span> <span class="mf">3.9.5</span> <span class="p">(</span><span class="n">default</span><span class="p">,</span> <span class="n">Mar</span> <span class="mi">14</span> <span class="mi">2023</span><span class="p">,</span> <span class="mi">08</span><span class="p">:</span><span class="mi">11</span><span class="p">:</span><span class="mi">14</span><span class="p">)</span>
+<span class="p">[</span><span class="n">GCC</span> <span class="mf">9.4.0</span><span class="p">]</span> <span class="n">on</span> <span class="n">linux</span>
+<span class="n">Type</span> <span class="s2">&quot;help&quot;</span><span class="p">,</span> <span class="s2">&quot;copyright&quot;</span><span class="p">,</span> <span class="s2">&quot;credits&quot;</span> <span class="ow">or</span> <span class="s2">&quot;license&quot;</span> <span class="k">for</span> <span class="n">more</span> <span class="n">information</span><span class="o">.</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">axcl</span>
+<span class="o">&gt;&gt;&gt;</span>
+</pre></div>
+</div>
+</li>
+<li><p>Uninstall: <code class="docutils literal notranslate"><span class="pre">pip3</span> <span class="pre">uninstall</span> <span class="pre">pyAXCL</span> <span class="pre">-y</span></code>.</p></li>
+<li><p>Build whl.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>pip3<span class="w"> </span>install<span class="w"> </span>setuptools<span class="w"> </span>wheel
+$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>axcl/python
+$<span class="w"> </span>./build.sh
+</pre></div>
+</div>
+</li>
+</ol>
+</section>
+<section id="module-axcl.axcl">
+<span id="axcl"></span><h2><span class="section-number">12.13. </span>axcl<a class="headerlink" href="#module-axcl.axcl" title="Link to this heading">#</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="axcl.axcl.init">
+<span class="sig-name descname"><span class="pre">init</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#axcl.axcl.init" title="Link to this definition">#</a></dt>
+<dd><p>Init</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Language</strong></p></th>
+<th class="head"><p><strong>Function Prototype</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>C</strong></p></td>
+<td><p><cite>axclError axclInit(const char *config);</cite></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>python</strong></p></td>
+<td><p><cite>ret = axcl.rt.init(config)</cite></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>config</strong> (<em>str</em>) – json config file path.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>ret</strong> (<em>int</em>) - 0 indicates success, otherwise failure</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="axcl.axcl.finalize">
+<span class="sig-name descname"><span class="pre">finalize</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#axcl.axcl.finalize" title="Link to this definition">#</a></dt>
+<dd><p>Finalize</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Language</strong></p></th>
+<th class="head"><p><strong>Function Prototype</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>C</strong></p></td>
+<td><p><cite>axclError axclFinalize();</cite></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>python</strong></p></td>
+<td><p><cite>ret = axcl.rt.finalize()</cite></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>ret</strong> (<em>int</em>) - 0 indicates success, otherwise failure</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="axcl.axcl.set_log_level">
+<span class="sig-name descname"><span class="pre">set_log_level</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">level</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#axcl.axcl.set_log_level" title="Link to this definition">#</a></dt>
+<dd><p>c api: axclError axclSetLogLevel(int32_t lv);</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="axcl.axcl.app_log">
+<span class="sig-name descname"><span class="pre">app_log</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">level</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">func</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">file</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">line</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">message</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#axcl.axcl.app_log" title="Link to this definition">#</a></dt>
+<dd><p>Output app log to log file or console</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Language</strong></p></th>
+<th class="head"><p><strong>Function Prototype</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>C</strong></p></td>
+<td><p><cite>void axclAppLog(int32_t lv, const char *func, const char *file, uint32_t line, const char *fmt, …);</cite></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>python</strong></p></td>
+<td><p><cite>ret = axcl.rt.app_log(level, func, file, line, message)</cite></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>level</strong> (<em>int</em>) – log level.</p></li>
+<li><p><strong>func</strong> (<em>str</em>) – function name.</p></li>
+<li><p><strong>file</strong> (<em>str</em>) – file name.</p></li>
+<li><p><strong>line</strong> (<em>int</em>) – code line.</p></li>
+<li><p><strong>message</strong> (<em>str</em>) – log message.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-axcl.ax_codec_comm">
+<span id="axcl-ax-codec-comm"></span><h2><span class="section-number">12.14. </span>axcl.ax_codec_comm<a class="headerlink" href="#module-axcl.ax_codec_comm" title="Link to this heading">#</a></h2>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="axcl.ax_codec_comm.AX_FRAME_TYPE_E">
+<span class="sig-name descname"><span class="pre">AX_FRAME_TYPE_E</span></span><a class="headerlink" href="#axcl.ax_codec_comm.AX_FRAME_TYPE_E" title="Link to this definition">#</a></dt>
+<dd><p>Channel flag attribute.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">AX_FRAME_TYPE_NONE</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">AX_FRAME_TYPE_AUTO</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">AX_FRAME_TYPE_IDR</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">AX_FRAME_TYPE_I</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">AX_FRAME_TYPE_P</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="n">AX_FRAME_TYPE_B</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">AX_FRAME_TYPE_BUTT</span> <span class="o">=</span> <span class="mi">6</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</section>
+<section id="module-axcl.ax_global_type">
+<span id="axcl-ax-global-type"></span><h2><span class="section-number">12.15. </span>axcl.ax_global_type<a class="headerlink" href="#module-axcl.ax_global_type" title="Link to this heading">#</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="axcl.ax_global_type.AX_FRAME_RATE_CTRL_T">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">AX_FRAME_RATE_CTRL_T</span></span><a class="headerlink" href="#axcl.ax_global_type.AX_FRAME_RATE_CTRL_T" title="Link to this definition">#</a></dt>
+<dd><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">dict_frame_rate_ctrl</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;src_frame_rate&quot;</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+    <span class="s2">&quot;dst_frame_rate&quot;</span><span class="p">:</span> <span class="nb">int</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="axcl.ax_global_type.AX_CHIP_TYPE_E">
+<span class="sig-name descname"><span class="pre">AX_CHIP_TYPE_E</span></span><a class="headerlink" href="#axcl.ax_global_type.AX_CHIP_TYPE_E" title="Link to this definition">#</a></dt>
+<dd><p>chip type</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">NONE_CHIP_TYPE</span> <span class="o">=</span> <span class="mh">0x0</span>
+<span class="n">AX650A_CHIP</span>    <span class="o">=</span> <span class="mh">0x1</span>
+<span class="n">AX650N_CHIP</span>    <span class="o">=</span> <span class="mh">0x2</span>
+<span class="n">AX650C_CHIP</span>    <span class="o">=</span> <span class="mh">0x3</span>
+<span class="n">AX750_CHIP</span>     <span class="o">=</span> <span class="mh">0x4</span>
+<span class="n">AX650_CHIP_MAX</span> <span class="o">=</span> <span class="mh">0x5</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="axcl.ax_global_type.AX_PAYLOAD_TYPE_E">
+<span class="sig-name descname"><span class="pre">AX_PAYLOAD_TYPE_E</span></span><a class="headerlink" href="#axcl.ax_global_type.AX_PAYLOAD_TYPE_E" title="Link to this definition">#</a></dt>
+<dd><p>payload type</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">PT_PCMU</span>         <span class="o">=</span> <span class="mi">0</span>
+<span class="n">PT_1016</span>         <span class="o">=</span> <span class="mi">1</span>
+<span class="n">PT_G721</span>         <span class="o">=</span> <span class="mi">2</span>
+<span class="n">PT_GSM</span>          <span class="o">=</span> <span class="mi">3</span>
+<span class="n">PT_G723</span>         <span class="o">=</span> <span class="mi">4</span>
+<span class="n">PT_DVI4_8K</span>      <span class="o">=</span> <span class="mi">5</span>
+<span class="n">PT_DVI4_16K</span>     <span class="o">=</span> <span class="mi">6</span>
+<span class="n">PT_LPC</span>          <span class="o">=</span> <span class="mi">7</span>
+<span class="n">PT_PCMA</span>         <span class="o">=</span> <span class="mi">8</span>
+<span class="n">PT_G722</span>         <span class="o">=</span> <span class="mi">9</span>
+<span class="n">PT_S16BE_STEREO</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">PT_S16BE_MONO</span>   <span class="o">=</span> <span class="mi">11</span>
+<span class="n">PT_QCELP</span>        <span class="o">=</span> <span class="mi">12</span>
+<span class="n">PT_CN</span>           <span class="o">=</span> <span class="mi">13</span>
+<span class="n">PT_MPEGAUDIO</span>    <span class="o">=</span> <span class="mi">14</span>
+<span class="n">PT_G728</span>         <span class="o">=</span> <span class="mi">15</span>
+<span class="n">PT_DVI4_3</span>       <span class="o">=</span> <span class="mi">16</span>
+<span class="n">PT_DVI4_4</span>       <span class="o">=</span> <span class="mi">17</span>
+<span class="n">PT_G729</span>         <span class="o">=</span> <span class="mi">18</span>
+<span class="n">PT_G711A</span>        <span class="o">=</span> <span class="mi">19</span>
+<span class="n">PT_G711U</span>        <span class="o">=</span> <span class="mi">20</span>
+<span class="n">PT_G726</span>         <span class="o">=</span> <span class="mi">21</span>
+<span class="n">PT_G729A</span>        <span class="o">=</span> <span class="mi">22</span>
+<span class="n">PT_LPCM</span>         <span class="o">=</span> <span class="mi">23</span>
+<span class="n">PT_CelB</span>         <span class="o">=</span> <span class="mi">25</span>
+<span class="n">PT_JPEG</span>         <span class="o">=</span> <span class="mi">26</span>
+<span class="n">PT_CUSM</span>         <span class="o">=</span> <span class="mi">27</span>
+<span class="n">PT_NV</span>           <span class="o">=</span> <span class="mi">28</span>
+<span class="n">PT_PICW</span>         <span class="o">=</span> <span class="mi">29</span>
+<span class="n">PT_CPV</span>          <span class="o">=</span> <span class="mi">30</span>
+<span class="n">PT_H261</span>         <span class="o">=</span> <span class="mi">31</span>
+<span class="n">PT_MPEGVIDEO</span>    <span class="o">=</span> <span class="mi">32</span>
+<span class="n">PT_MPEG2TS</span>      <span class="o">=</span> <span class="mi">33</span>
+<span class="n">PT_H263</span>         <span class="o">=</span> <span class="mi">34</span>
+<span class="n">PT_SPEG</span>         <span class="o">=</span> <span class="mi">35</span>
+<span class="n">PT_MPEG2VIDEO</span>   <span class="o">=</span> <span class="mi">36</span>
+<span class="n">PT_AAC</span>          <span class="o">=</span> <span class="mi">37</span>
+<span class="n">PT_WMA9STD</span>      <span class="o">=</span> <span class="mi">38</span>
+<span class="n">PT_HEAAC</span>        <span class="o">=</span> <span class="mi">39</span>
+<span class="n">PT_PCM_VOICE</span>    <span class="o">=</span> <span class="mi">40</span>
+<span class="n">PT_PCM_AUDIO</span>    <span class="o">=</span> <span class="mi">41</span>
+<span class="n">PT_AACLC</span>        <span class="o">=</span> <span class="mi">42</span>
+<span class="n">PT_MP3</span>          <span class="o">=</span> <span class="mi">43</span>
+<span class="n">PT_ADPCMA</span>       <span class="o">=</span> <span class="mi">49</span>
+<span class="n">PT_AEC</span>          <span class="o">=</span> <span class="mi">50</span>
+<span class="n">PT_X_LD</span>         <span class="o">=</span> <span class="mi">95</span>
+<span class="n">PT_H264</span>         <span class="o">=</span> <span class="mi">96</span>
+<span class="n">PT_D_GSM_HR</span>     <span class="o">=</span> <span class="mi">200</span>
+<span class="n">PT_D_GSM_EFR</span>    <span class="o">=</span> <span class="mi">201</span>
+<span class="n">PT_D_L8</span>         <span class="o">=</span> <span class="mi">202</span>
+<span class="n">PT_D_RED</span>        <span class="o">=</span> <span class="mi">203</span>
+<span class="n">PT_D_VDVI</span>       <span class="o">=</span> <span class="mi">204</span>
+<span class="n">PT_D_BT656</span>      <span class="o">=</span> <span class="mi">220</span>
+<span class="n">PT_D_H263_1998</span>  <span class="o">=</span> <span class="mi">221</span>
+<span class="n">PT_D_MP1S</span>       <span class="o">=</span> <span class="mi">222</span>
+<span class="n">PT_D_MP2P</span>       <span class="o">=</span> <span class="mi">223</span>
+<span class="n">PT_D_BMPEG</span>      <span class="o">=</span> <span class="mi">224</span>
+<span class="n">PT_MP4VIDEO</span>     <span class="o">=</span> <span class="mi">230</span>
+<span class="n">PT_MP4AUDIO</span>     <span class="o">=</span> <span class="mi">237</span>
+<span class="n">PT_VC1</span>          <span class="o">=</span> <span class="mi">238</span>
+<span class="n">PT_JVC_ASF</span>      <span class="o">=</span> <span class="mi">255</span>
+<span class="n">PT_D_AVI</span>        <span class="o">=</span> <span class="mi">256</span>
+<span class="n">PT_DIVX3</span>        <span class="o">=</span> <span class="mi">257</span>
+<span class="n">PT_AVS</span>          <span class="o">=</span> <span class="mi">258</span>
+<span class="n">PT_REAL8</span>        <span class="o">=</span> <span class="mi">259</span>
+<span class="n">PT_REAL9</span>        <span class="o">=</span> <span class="mi">260</span>
+<span class="n">PT_VP6</span>          <span class="o">=</span> <span class="mi">261</span>
+<span class="n">PT_VP6F</span>         <span class="o">=</span> <span class="mi">262</span>
+<span class="n">PT_VP6A</span>         <span class="o">=</span> <span class="mi">263</span>
+<span class="n">PT_SORENSON</span>     <span class="o">=</span> <span class="mi">264</span>
+<span class="n">PT_H265</span>         <span class="o">=</span> <span class="mi">265</span>
+<span class="n">PT_VP8</span>          <span class="o">=</span> <span class="mi">266</span>
+<span class="n">PT_MVC</span>          <span class="o">=</span> <span class="mi">267</span>
+<span class="n">PT_PNG</span>          <span class="o">=</span> <span class="mi">268</span>
+<span class="n">PT_AVS2</span>         <span class="o">=</span> <span class="mi">269</span>
+<span class="n">PT_VP7</span>          <span class="o">=</span> <span class="mi">270</span>
+<span class="n">PT_VP9</span>          <span class="o">=</span> <span class="mi">271</span>
+<span class="n">PT_AMR</span>          <span class="o">=</span> <span class="mi">1001</span>
+<span class="n">PT_MJPEG</span>        <span class="o">=</span> <span class="mi">1002</span>
+<span class="n">PT_AMRWB</span>        <span class="o">=</span> <span class="mi">1003</span>
+<span class="n">PT_PRORES</span>       <span class="o">=</span> <span class="mi">1006</span>
+<span class="n">PT_OPUS</span>         <span class="o">=</span> <span class="mi">1007</span>
+<span class="n">PT_BUTT</span>         <span class="o">=</span> <span class="mi">1008</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="axcl.ax_global_type.AX_VSCAN_FORMAT_E">
+<span class="sig-name descname"><span class="pre">AX_VSCAN_FORMAT_E</span></span><a class="headerlink" href="#axcl.ax_global_type.AX_VSCAN_FORMAT_E" title="Link to this definition">#</a></dt>
+<dd><p>vscan format</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">AX_VSCAN_FORMAT_RASTER</span> <span class="o">=</span> <span class="mi">0</span>    <span class="c1"># video raster scan mode</span>
+<span class="n">AX_VSCAN_FORMAT_BUTT</span>   <span class="o">=</span> <span class="mi">1</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="axcl.ax_global_type.AX_COMPRESS_MODE_E">
+<span class="sig-name descname"><span class="pre">AX_COMPRESS_MODE_E</span></span><a class="headerlink" href="#axcl.ax_global_type.AX_COMPRESS_MODE_E" title="Link to this definition">#</a></dt>
+<dd><p>compress mode</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">AX_COMPRESS_MODE_NONE</span>     <span class="o">=</span> <span class="mi">0</span>    <span class="c1"># no compress</span>
+<span class="n">AX_COMPRESS_MODE_LOSSLESS</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">AX_COMPRESS_MODE_LOSSY</span>    <span class="o">=</span> <span class="mi">2</span>
+<span class="n">AX_COMPRESS_MODE_BUTT</span>     <span class="o">=</span> <span class="mi">3</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="axcl.ax_global_type.AX_FRAME_COMPRESS_INFO_T">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">AX_FRAME_COMPRESS_INFO_T</span></span><a class="headerlink" href="#axcl.ax_global_type.AX_FRAME_COMPRESS_INFO_T" title="Link to this definition">#</a></dt>
+<dd><pre class="literal-block">dict_frame_compress_info = {
+    &quot;compress_mode&quot;: <a class="reference internal" href="#axcl.ax_global_type.AX_COMPRESS_MODE_E" title="axcl.ax_global_type.AX_COMPRESS_MODE_E"><code class="xref py py-class docutils literal notranslate"><span class="pre">AX_COMPRESS_MODE_E</span></code></a>,
+    &quot;compress_level&quot;: int
+}</pre>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="axcl.ax_global_type.AX_DYNAMIC_RANGE_E">
+<span class="sig-name descname"><span class="pre">AX_DYNAMIC_RANGE_E</span></span><a class="headerlink" href="#axcl.ax_global_type.AX_DYNAMIC_RANGE_E" title="Link to this definition">#</a></dt>
+<dd><p>dynamic range</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">AX_DYNAMIC_RANGE_SDR8</span>  <span class="o">=</span> <span class="mi">0</span>
+<span class="n">AX_DYNAMIC_RANGE_SDR10</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">AX_DYNAMIC_RANGE_HDR10</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">AX_DYNAMIC_RANGE_HLG</span>   <span class="o">=</span> <span class="mi">3</span>
+<span class="n">AX_DYNAMIC_RANGE_SLF</span>   <span class="o">=</span> <span class="mi">4</span>
+<span class="n">AX_DYNAMIC_RANGE_XDR</span>   <span class="o">=</span> <span class="mi">5</span>
+<span class="n">AX_DYNAMIC_RANGE_BUTT</span>  <span class="o">=</span> <span class="mi">6</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="axcl.ax_global_type.AX_COLOR_GAMUT_E">
+<span class="sig-name descname"><span class="pre">AX_COLOR_GAMUT_E</span></span><a class="headerlink" href="#axcl.ax_global_type.AX_COLOR_GAMUT_E" title="Link to this definition">#</a></dt>
+<dd><p>color gamut</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">AX_COLOR_GAMUT_BT601</span>  <span class="o">=</span> <span class="mi">0</span>
+<span class="n">AX_COLOR_GAMUT_BT709</span>  <span class="o">=</span> <span class="mi">1</span>
+<span class="n">AX_COLOR_GAMUT_BT2020</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">AX_COLOR_GAMUT_USER</span>   <span class="o">=</span> <span class="mi">3</span>
+<span class="n">AX_COLOR_GAMUT_BUTT</span>   <span class="o">=</span> <span class="mi">4</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="axcl.ax_global_type.AX_IMG_FORMAT_E">
+<span class="sig-name descname"><span class="pre">AX_IMG_FORMAT_E</span></span><a class="headerlink" href="#axcl.ax_global_type.AX_IMG_FORMAT_E" title="Link to this definition">#</a></dt>
+<dd><p>Image format</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">AX_FORMAT_INVALID</span>                            <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+                                                                       <span class="c1"># YUV400 8 bit</span>
+<span class="n">AX_FORMAT_YUV400</span>                             <span class="o">=</span> <span class="mh">0x0</span>                     <span class="c1"># Y...</span>
+<span class="n">AX_FORMAT_YUV420_PLANAR</span>                      <span class="o">=</span> <span class="mh">0x1</span>                     <span class="c1"># YYYY... UUUU... VVVV...   I420/YU12</span>
+<span class="n">AX_FORMAT_YUV420_PLANAR_VU</span>                   <span class="o">=</span> <span class="mh">0x2</span>                     <span class="c1"># YYYY... VVVV... UUUU...  YV12</span>
+<span class="n">AX_FORMAT_YUV420_SEMIPLANAR</span>                  <span class="o">=</span> <span class="mh">0x3</span>                     <span class="c1"># YYYY... UVUVUV...       NV12</span>
+<span class="n">AX_FORMAT_YUV420_SEMIPLANAR_VU</span>               <span class="o">=</span> <span class="mh">0x4</span>                     <span class="c1"># YYYY... VUVUVU...      NV21</span>
+                                                                       <span class="c1"># YUV422 8 bit</span>
+<span class="n">AX_FORMAT_YUV422_PLANAR</span>                      <span class="o">=</span> <span class="mh">0x8</span>                     <span class="c1"># YYYY... UUUU... VVVV...   I422</span>
+<span class="n">AX_FORMAT_YUV422_PLANAR_VU</span>                   <span class="o">=</span> <span class="mh">0x9</span>                     <span class="c1"># YYYY... VVVV... UUUU...  YV16</span>
+<span class="n">AX_FORMAT_YUV422_SEMIPLANAR</span>                  <span class="o">=</span> <span class="mh">0xA</span>                     <span class="c1"># YYYY... UVUVUV...       NV16</span>
+<span class="n">AX_FORMAT_YUV422_SEMIPLANAR_VU</span>               <span class="o">=</span> <span class="mh">0xB</span>                     <span class="c1"># YYYY... VUVUVU...       NV61</span>
+<span class="n">AX_FORMAT_YUV422_INTERLEAVED_YUVY</span>            <span class="o">=</span> <span class="mh">0xC</span>                     <span class="c1"># YUVYYUVY...           YUVY</span>
+<span class="n">AX_FORMAT_YUV422_INTERLEAVED_YUYV</span>            <span class="o">=</span> <span class="mh">0xD</span>                     <span class="c1"># YUYVYUYV...           YUYV</span>
+<span class="n">AX_FORMAT_YUV422_INTERLEAVED_UYVY</span>            <span class="o">=</span> <span class="mh">0xE</span>                     <span class="c1"># UYVYUYVY...           UYVY</span>
+<span class="n">AX_FORMAT_YUV422_INTERLEAVED_VYUY</span>            <span class="o">=</span> <span class="mh">0xF</span>                     <span class="c1"># VYUYVYUY...           VYUY</span>
+<span class="n">AX_FORMAT_YUV422_INTERLEAVED_YVYU</span>            <span class="o">=</span> <span class="mh">0x10</span>                    <span class="c1"># VYUYVYUY...           YVYU</span>
+                                                                       <span class="c1"># YUV444 8 bit</span>
+<span class="n">AX_FORMAT_YUV444_PLANAR</span>                      <span class="o">=</span> <span class="mh">0x14</span>                    <span class="c1"># YYYY... UUUU... VVVV...   I444</span>
+<span class="n">AX_FORMAT_YUV444_PLANAR_VU</span>                   <span class="o">=</span> <span class="mh">0x15</span>                    <span class="c1"># YYYY... VVVV... UUUU...  YV24</span>
+<span class="n">AX_FORMAT_YUV444_SEMIPLANAR</span>                  <span class="o">=</span> <span class="mh">0x16</span>                    <span class="c1"># YYYY... UVUVUV...       NV24</span>
+<span class="n">AX_FORMAT_YUV444_SEMIPLANAR_VU</span>               <span class="o">=</span> <span class="mh">0x17</span>                    <span class="c1"># YYYY... VUVUVU...      NV42</span>
+<span class="n">AX_FORMAT_YUV444_PACKED</span>                      <span class="o">=</span> <span class="mh">0x18</span>                    <span class="c1"># YUV YUV YUV ...</span>
+                                                                       <span class="c1"># YUV 10 bit</span>
+<span class="n">AX_FORMAT_YUV400_10BIT</span>                       <span class="o">=</span> <span class="mh">0x20</span>
+<span class="n">AX_FORMAT_YUV420_PLANAR_10BIT_UV_PACKED_4Y5B</span> <span class="o">=</span> <span class="mh">0x24</span>                    <span class="c1"># YYYY... UUUU... VVVV... , 4 Y pixels in 5 bytes, UV packed</span>
+<span class="n">AX_FORMAT_YUV420_PLANAR_10BIT_I010</span>           <span class="o">=</span> <span class="mh">0x25</span>                    <span class="c1"># 16 bit pixel, low 10bits valid, high 6 bits invalid</span>
+<span class="n">AX_FORMAT_YUV420_SEMIPLANAR_10BIT_P101010</span>    <span class="o">=</span> <span class="mh">0x28</span>                    <span class="c1"># YYYY... UVUVUV... ,  Y/U/V 4 pixels in 5 bytes</span>
+<span class="n">AX_FORMAT_YUV420_SEMIPLANAR_10BIT_P010</span>       <span class="o">=</span> <span class="mh">0x2A</span>                    <span class="c1"># 16 bit pixel, high 10bits valid, low 6 bits invalid</span>
+<span class="n">AX_FORMAT_YUV420_SEMIPLANAR_10BIT_P016</span>       <span class="o">=</span> <span class="mh">0x2C</span>                    <span class="c1"># 16 bit pixel, low 10bits valid, high 6 bits invalid</span>
+<span class="n">AX_FORMAT_YUV420_SEMIPLANAR_10BIT_I016</span>       <span class="o">=</span> <span class="mh">0x2E</span>                    <span class="c1"># 16 bit pixel, high 10bits valid, low 6 bits invalid</span>
+<span class="n">AX_FORMAT_YUV420_SEMIPLANAR_10BIT_12P16B</span>     <span class="o">=</span> <span class="mh">0x2F</span>                    <span class="c1"># 12 pixels in 16bytes, low 120bits valid, high 8 bits invalid</span>
+<span class="n">AX_FORMAT_YUV444_PACKED_10BIT_P010</span>           <span class="o">=</span> <span class="mh">0x30</span>                    <span class="c1"># YUV YUV YUV ... , 16 bit pixel, high 10bits valid, low 6 bits invalid</span>
+<span class="n">AX_FORMAT_YUV444_PACKED_10BIT_P101010</span>        <span class="o">=</span> <span class="mh">0x32</span>                    <span class="c1"># YUV YUV YUV ... , 4 pixels storage in 5 bytes</span>
+<span class="n">AX_FORMAT_YUV422_SEMIPLANAR_10BIT_P101010</span>    <span class="o">=</span> <span class="mh">0x33</span>                    <span class="c1"># YYYY... UVUVUV... ,  Y/U/V 4 pixels in 5 bytes</span>
+<span class="n">AX_FORMAT_YUV422_SEMIPLANAR_10BIT_P010</span>       <span class="o">=</span> <span class="mh">0x34</span>                    <span class="c1"># 16 bit pixel, high 10bits valid, low 6 bits invalid</span>
+                                                                       <span class="c1"># BAYER RAW</span>
+<span class="n">AX_FORMAT_BAYER_RAW_8BPP</span>                     <span class="o">=</span> <span class="mh">0x80</span>
+<span class="n">AX_FORMAT_BAYER_RAW_10BPP</span>                    <span class="o">=</span> <span class="mh">0x81</span>
+<span class="n">AX_FORMAT_BAYER_RAW_12BPP</span>                    <span class="o">=</span> <span class="mh">0x82</span>
+<span class="n">AX_FORMAT_BAYER_RAW_14BPP</span>                    <span class="o">=</span> <span class="mh">0x83</span>
+<span class="n">AX_FORMAT_BAYER_RAW_16BPP</span>                    <span class="o">=</span> <span class="mh">0x84</span>
+<span class="n">AX_FORMAT_BAYER_RAW_10BPP_PACKED</span>             <span class="o">=</span> <span class="mh">0x85</span>
+<span class="n">AX_FORMAT_BAYER_RAW_12BPP_PACKED</span>             <span class="o">=</span> <span class="mh">0x86</span>
+<span class="n">AX_FORMAT_BAYER_RAW_14BPP_PACKED</span>             <span class="o">=</span> <span class="mh">0x87</span>
+                                                                       <span class="c1"># RGB Format</span>
+<span class="n">AX_FORMAT_RGB565</span>                             <span class="o">=</span> <span class="mh">0xA0</span>                    <span class="c1"># BGRBGR..., RGB565 16bpp</span>
+<span class="n">AX_FORMAT_RGB888</span>                             <span class="o">=</span> <span class="mh">0xA1</span>                    <span class="c1"># BGRBGR..., RGB888 24bpp</span>
+<span class="n">AX_FORMAT_KRGB444</span>                            <span class="o">=</span> <span class="mh">0xA2</span>
+<span class="n">AX_FORMAT_KRGB555</span>                            <span class="o">=</span> <span class="mh">0xA3</span>
+<span class="n">AX_FORMAT_KRGB888</span>                            <span class="o">=</span> <span class="mh">0xA4</span>
+<span class="n">AX_FORMAT_BGR888</span>                             <span class="o">=</span> <span class="mh">0xA5</span>                    <span class="c1"># RGBRGB..., BGR888 32bpp</span>
+<span class="n">AX_FORMAT_BGR565</span>                             <span class="o">=</span> <span class="mh">0xA6</span>                    <span class="c1"># RGBRGB..., BGR565 16bpp</span>
+<span class="n">AX_FORMAT_ARGB4444</span>                           <span class="o">=</span> <span class="mh">0xC5</span>                    <span class="c1"># BGRABGRA..., ARGB4444 16bpp</span>
+<span class="n">AX_FORMAT_ARGB1555</span>                           <span class="o">=</span> <span class="mh">0xC6</span>                    <span class="c1"># BGRABGRA..., ARGB1555 16bpp</span>
+<span class="n">AX_FORMAT_ARGB8888</span>                           <span class="o">=</span> <span class="mh">0xC7</span>                    <span class="c1"># BGRABGRA..., ARGB8888 32bpp</span>
+<span class="n">AX_FORMAT_ARGB8565</span>                           <span class="o">=</span> <span class="mh">0xC8</span>                    <span class="c1"># BGRABGRA..., ARGB8565 24bpp</span>
+<span class="n">AX_FORMAT_RGBA8888</span>                           <span class="o">=</span> <span class="mh">0xC9</span>                    <span class="c1"># ABGRABGR..., RGBA8888 32bpp</span>
+<span class="n">AX_FORMAT_RGBA5551</span>                           <span class="o">=</span> <span class="mh">0xCA</span>                    <span class="c1"># ABGRABGR..., RGBA5551 16bpp</span>
+<span class="n">AX_FORMAT_RGBA4444</span>                           <span class="o">=</span> <span class="mh">0xCB</span>                    <span class="c1"># ABGRABGR..., RGBA4444 16bpp</span>
+<span class="n">AX_FORMAT_RGBA5658</span>                           <span class="o">=</span> <span class="mh">0xCC</span>                    <span class="c1"># ABGRABGR..., RGBA5658 24bpp</span>
+<span class="n">AX_FORMAT_ABGR4444</span>                           <span class="o">=</span> <span class="mh">0xCD</span>                    <span class="c1"># RGBARGBA..., ABGR4444 16bpp</span>
+<span class="n">AX_FORMAT_ABGR1555</span>                           <span class="o">=</span> <span class="mh">0xCE</span>                    <span class="c1"># RGBARGBA..., ABGR1555 16bpp</span>
+<span class="n">AX_FORMAT_ABGR8888</span>                           <span class="o">=</span> <span class="mh">0xCF</span>                    <span class="c1"># RGBARGBA..., ABGR8888 32bpp</span>
+<span class="n">AX_FORMAT_ABGR8565</span>                           <span class="o">=</span> <span class="mh">0xD0</span>                    <span class="c1"># RGBARGBA..., ABGR8565 24bpp</span>
+<span class="n">AX_FORMAT_BGRA8888</span>                           <span class="o">=</span> <span class="mh">0xD1</span>                    <span class="c1"># ARGBARGB..., BGRA8888 32bpp</span>
+<span class="n">AX_FORMAT_BGRA5551</span>                           <span class="o">=</span> <span class="mh">0xD2</span>                    <span class="c1"># ARGBARGB..., BGRA5551 16bpp</span>
+<span class="n">AX_FORMAT_BGRA4444</span>                           <span class="o">=</span> <span class="mh">0xD3</span>                    <span class="c1"># ARGBARGB..., BGRA4444 16bpp</span>
+<span class="n">AX_FORMAT_BGRA5658</span>                           <span class="o">=</span> <span class="mh">0xD4</span>                    <span class="c1"># ARGBARGB..., BGRA5658 24bpp</span>
+<span class="n">AX_FORMAT_BITMAP</span>                             <span class="o">=</span> <span class="mh">0xE0</span>
+<span class="n">AX_FORMAT_MAX</span>                                <span class="o">=</span> <span class="n">AX_FORMAT_BITMAP</span> <span class="o">+</span> <span class="mi">1</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="axcl.ax_global_type.AX_FRAME_FLAG_E">
+<span class="sig-name descname"><span class="pre">AX_FRAME_FLAG_E</span></span><a class="headerlink" href="#axcl.ax_global_type.AX_FRAME_FLAG_E" title="Link to this definition">#</a></dt>
+<dd><p>frame flag</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">AX_FRM_FLG_NONE</span>    <span class="o">=</span> <span class="mh">0x0</span>
+<span class="n">AX_FRM_FLG_USR_PIC</span> <span class="o">=</span> <span class="p">(</span><span class="mh">0x1</span> <span class="o">&lt;&lt;</span> <span class="mi">0</span><span class="p">)</span>                <span class="c1"># for vdec user picture</span>
+<span class="n">AX_FRM_FLG_FR_CTRL</span> <span class="o">=</span> <span class="p">(</span><span class="mh">0x1</span> <span class="o">&lt;&lt;</span> <span class="mi">1</span><span class="p">)</span>                <span class="c1"># for vo frame ctrl</span>
+<span class="n">AX_FRM_FLG_BUTT</span>    <span class="o">=</span> <span class="n">AX_FRM_FLG_FR_CTRL</span> <span class="o">+</span> <span class="mi">1</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="axcl.ax_global_type.AX_VIDEO_FRAME_T">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">AX_VIDEO_FRAME_T</span></span><a class="headerlink" href="#axcl.ax_global_type.AX_VIDEO_FRAME_T" title="Link to this definition">#</a></dt>
+<dd><pre class="literal-block">dict_video_frame = {
+    &quot;width&quot;: int,
+    &quot;height&quot;: int,
+    &quot;img_format&quot;: <a class="reference internal" href="#axcl.ax_global_type.AX_IMG_FORMAT_E" title="axcl.ax_global_type.AX_IMG_FORMAT_E"><code class="xref py py-class docutils literal notranslate"><span class="pre">AX_IMG_FORMAT_E</span></code></a>,
+    &quot;vscan_format&quot;: <a class="reference internal" href="#axcl.ax_global_type.AX_VSCAN_FORMAT_E" title="axcl.ax_global_type.AX_VSCAN_FORMAT_E"><code class="xref py py-class docutils literal notranslate"><span class="pre">AX_VSCAN_FORMAT_E</span></code></a>,
+    &quot;compress_info&quot;: <a class="reference internal" href="#axcl.ax_global_type.AX_FRAME_COMPRESS_INFO_T" title="axcl.ax_global_type.AX_FRAME_COMPRESS_INFO_T"><code class="xref py py-class docutils literal notranslate"><span class="pre">AX_FRAME_COMPRESS_INFO_T</span></code></a>,
+    &quot;dynamic_range&quot;: <a class="reference internal" href="#axcl.ax_global_type.AX_DYNAMIC_RANGE_E" title="axcl.ax_global_type.AX_DYNAMIC_RANGE_E"><code class="xref py py-class docutils literal notranslate"><span class="pre">AX_DYNAMIC_RANGE_E</span></code></a>,
+    &quot;color_gamut&quot;: <a class="reference internal" href="#axcl.ax_global_type.AX_COLOR_GAMUT_E" title="axcl.ax_global_type.AX_COLOR_GAMUT_E"><code class="xref py py-class docutils literal notranslate"><span class="pre">AX_COLOR_GAMUT_E</span></code></a>,
+    &quot;pic_stride&quot;: [int],
+    &quot;ext_stride&quot;: [int],
+    &quot;phy_addr&quot;: [int],
+    &quot;vir_addr&quot;: [int],
+    &quot;ext_phy_addr&quot;: [int],
+    &quot;ext_vir_addr&quot;: [int],
+    &quot;header_size&quot;: [int],
+    &quot;blk_id&quot;: [int],
+    &quot;crop_x&quot;: int,
+    &quot;crop_y&quot;: int,
+    &quot;crop_width&quot;: int,
+    &quot;crop_height&quot;: int,
+    &quot;time_ref&quot;: int,
+    &quot;pts&quot;: int,
+    &quot;seq_num&quot;: int,
+    &quot;user_data&quot;: int,
+    &quot;private_data&quot;: int,
+    &quot;frame_flag&quot;: int,
+    &quot;frame_size&quot;: int
+}</pre>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="axcl.ax_global_type.AX_MOD_ID_E">
+<span class="sig-name descname"><span class="pre">AX_MOD_ID_E</span></span><a class="headerlink" href="#axcl.ax_global_type.AX_MOD_ID_E" title="Link to this definition">#</a></dt>
+<dd><p>module id</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">AX_ID_MIN</span>      <span class="o">=</span> <span class="mh">0x00</span>
+<span class="n">AX_ID_ISP</span>      <span class="o">=</span> <span class="mh">0x01</span>
+<span class="n">AX_ID_CE</span>       <span class="o">=</span> <span class="mh">0x02</span>
+<span class="n">AX_ID_VO</span>       <span class="o">=</span> <span class="mh">0x03</span>
+<span class="n">AX_ID_VDSP</span>     <span class="o">=</span> <span class="mh">0x04</span>
+<span class="n">AX_ID_EFUSE</span>    <span class="o">=</span> <span class="mh">0x05</span>
+<span class="n">AX_ID_NPU</span>      <span class="o">=</span> <span class="mh">0x06</span>
+<span class="n">AX_ID_VENC</span>     <span class="o">=</span> <span class="mh">0x07</span>
+<span class="n">AX_ID_VDEC</span>     <span class="o">=</span> <span class="mh">0x08</span>
+<span class="n">AX_ID_JENC</span>     <span class="o">=</span> <span class="mh">0x09</span>
+<span class="n">AX_ID_JDEC</span>     <span class="o">=</span> <span class="mh">0x0a</span>
+<span class="n">AX_ID_SYS</span>      <span class="o">=</span> <span class="mh">0x0b</span>
+<span class="n">AX_ID_AENC</span>     <span class="o">=</span> <span class="mh">0x0c</span>
+<span class="n">AX_ID_IVPS</span>     <span class="o">=</span> <span class="mh">0x0d</span>
+<span class="n">AX_ID_MIPI</span>     <span class="o">=</span> <span class="mh">0x0e</span>
+<span class="n">AX_ID_ADEC</span>     <span class="o">=</span> <span class="mh">0x0f</span>
+<span class="n">AX_ID_DMA</span>      <span class="o">=</span> <span class="mh">0x10</span>
+<span class="n">AX_ID_VIN</span>      <span class="o">=</span> <span class="mh">0x11</span>
+<span class="n">AX_ID_USER</span>     <span class="o">=</span> <span class="mh">0x12</span>
+<span class="n">AX_ID_IVES</span>     <span class="o">=</span> <span class="mh">0x13</span>
+<span class="n">AX_ID_SKEL</span>     <span class="o">=</span> <span class="mh">0x14</span>
+<span class="n">AX_ID_IVE</span>      <span class="o">=</span> <span class="mh">0x15</span>
+<span class="n">AX_ID_AVS</span>      <span class="o">=</span> <span class="mh">0x16</span>
+<span class="n">AX_ID_AVSCALI</span>  <span class="o">=</span> <span class="mh">0x17</span>
+<span class="n">AX_ID_3A</span>       <span class="o">=</span> <span class="mh">0X19</span>
+<span class="n">AX_ID_AUDIO</span>    <span class="o">=</span> <span class="mh">0x1a</span>
+<span class="n">AX_ID_PYRALITE</span> <span class="o">=</span> <span class="mh">0x1b</span>
+<span class="n">AX_ID_SIF</span>      <span class="o">=</span> <span class="mh">0x1c</span>
+<span class="n">AX_ID_ENGINE</span>   <span class="o">=</span> <span class="mh">0x1d</span>
+<span class="n">AX_ID_GDC_LITE</span> <span class="o">=</span> <span class="mh">0x1e</span>
+<span class="n">AX_ID_AI</span>       <span class="o">=</span> <span class="mh">0X20</span>
+<span class="n">AX_ID_AO</span>       <span class="o">=</span> <span class="mh">0X21</span>
+<span class="n">AX_ID_SENSOR</span>   <span class="o">=</span> <span class="mh">0x22</span>
+<span class="n">AX_ID_NT</span>       <span class="o">=</span> <span class="mh">0x23</span>
+<span class="n">AX_ID_TDP</span>      <span class="o">=</span> <span class="mh">0X24</span>
+<span class="n">AX_ID_VPP</span>      <span class="o">=</span> <span class="mh">0X25</span>
+<span class="n">AX_ID_VGP</span>      <span class="o">=</span> <span class="mh">0X26</span>
+<span class="n">AX_ID_GDC</span>      <span class="o">=</span> <span class="mh">0x27</span>
+<span class="n">AX_ID_BASE</span>     <span class="o">=</span> <span class="mh">0x28</span>
+<span class="n">AX_ID_ALGO</span>     <span class="o">=</span> <span class="mh">0x29</span>
+                         <span class="c1"># reserve</span>
+<span class="n">AX_ID_RESERVE</span>  <span class="o">=</span> <span class="mh">0x2a</span>
+<span class="n">AX_ID_BUTT</span>     <span class="o">=</span> <span class="mh">0x2b</span>
+                         <span class="c1"># for customer</span>
+<span class="n">AX_ID_CUST_MIN</span> <span class="o">=</span> <span class="mh">0x80</span>    <span class="c1"># 128</span>
+<span class="n">AX_ID_MAX</span>      <span class="o">=</span> <span class="mh">0xFF</span>    <span class="c1"># 255</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="axcl.ax_global_type.AX_LINK_MODE_E">
+<span class="sig-name descname"><span class="pre">AX_LINK_MODE_E</span></span><a class="headerlink" href="#axcl.ax_global_type.AX_LINK_MODE_E" title="Link to this definition">#</a></dt>
+<dd><p>link mode</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">AX_UNLINK_MODE</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">AX_LINK_MODE</span>   <span class="o">=</span> <span class="mi">1</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="axcl.ax_global_type.AX_AUDIO_FRAME_T">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">AX_AUDIO_FRAME_T</span></span><a class="headerlink" href="#axcl.ax_global_type.AX_AUDIO_FRAME_T" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="axcl.ax_global_type.AX_AUDIO_FRAME_INFO_T">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">AX_AUDIO_FRAME_INFO_T</span></span><a class="headerlink" href="#axcl.ax_global_type.AX_AUDIO_FRAME_INFO_T" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="axcl.ax_global_type.AX_VIDEO_FRAME_INFO_T">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">AX_VIDEO_FRAME_INFO_T</span></span><a class="headerlink" href="#axcl.ax_global_type.AX_VIDEO_FRAME_INFO_T" title="Link to this definition">#</a></dt>
+<dd><pre class="literal-block">dict_video_frame_info = {
+    &quot;video_frame&quot;: <a class="reference internal" href="#axcl.ax_global_type.AX_VIDEO_FRAME_T" title="axcl.ax_global_type.AX_VIDEO_FRAME_T"><code class="xref py py-class docutils literal notranslate"><span class="pre">AX_VIDEO_FRAME_T</span></code></a>,
+    &quot;mod_id&quot;: <a class="reference internal" href="#axcl.ax_global_type.AX_MOD_ID_E" title="axcl.ax_global_type.AX_MOD_ID_E"><code class="xref py py-class docutils literal notranslate"><span class="pre">AX_MOD_ID_E</span></code></a>,
+    &quot;is_end_of_stream&quot;: bool
+}</pre>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="axcl.ax_global_type.AX_SYS_CLK_LEVEL_E">
+<span class="sig-name descname"><span class="pre">AX_SYS_CLK_LEVEL_E</span></span><a class="headerlink" href="#axcl.ax_global_type.AX_SYS_CLK_LEVEL_E" title="Link to this definition">#</a></dt>
+<dd><p>sys clk level</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">AX_SYS_CLK_HIGH_MODE</span>            <span class="o">=</span> <span class="mi">0</span>
+<span class="n">AX_SYS_CLK_HIGH_HOTBALANCE_MODE</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">AX_SYS_CLK_MID_MODE</span>             <span class="o">=</span> <span class="mi">2</span>
+<span class="n">AX_SYS_CLK_MID_HOTBALANCE_MODE</span>  <span class="o">=</span> <span class="mi">3</span>
+<span class="n">AX_SYS_CLK_MAX_MODE</span>             <span class="o">=</span> <span class="mi">4</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="axcl.ax_global_type.AX_SYS_CLK_ID_E">
+<span class="sig-name descname"><span class="pre">AX_SYS_CLK_ID_E</span></span><a class="headerlink" href="#axcl.ax_global_type.AX_SYS_CLK_ID_E" title="Link to this definition">#</a></dt>
+<dd><p>sys clk id</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">AX_CPU_CLK_ID</span>     <span class="o">=</span> <span class="mi">0</span>
+<span class="n">AX_BUS_CLK_ID</span>     <span class="o">=</span> <span class="mi">1</span>
+<span class="n">AX_NPU_CLK_ID</span>     <span class="o">=</span> <span class="mi">2</span>
+<span class="n">AX_ISP_CLK_ID</span>     <span class="o">=</span> <span class="mi">3</span>
+<span class="n">AX_MM_CLK_ID</span>      <span class="o">=</span> <span class="mi">4</span>
+<span class="n">AX_VPU_CLK_ID</span>     <span class="o">=</span> <span class="mi">5</span>
+<span class="n">AX_SYS_CLK_MAX_ID</span> <span class="o">=</span> <span class="mi">6</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="axcl.ax_global_type.AX_MOD_INFO_T">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">AX_MOD_INFO_T</span></span><a class="headerlink" href="#axcl.ax_global_type.AX_MOD_INFO_T" title="Link to this definition">#</a></dt>
+<dd><pre class="literal-block">dict_mod_info = {
+    &quot;mod_id&quot;: <a class="reference internal" href="#axcl.ax_global_type.AX_MOD_ID_E" title="axcl.ax_global_type.AX_MOD_ID_E"><code class="xref py py-class docutils literal notranslate"><span class="pre">AX_MOD_ID_E</span></code></a>,
+    &quot;grp_id&quot;: int,
+    &quot;chn_id&quot;: int
+}</pre>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="axcl.ax_global_type.AX_LINK_DEST_T">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">AX_LINK_DEST_T</span></span><a class="headerlink" href="#axcl.ax_global_type.AX_LINK_DEST_T" title="Link to this definition">#</a></dt>
+<dd><pre class="literal-block">dict_link_dest = {
+    &quot;dest_num&quot;: int,
+    &quot;dest_mod&quot;: [<a class="reference internal" href="#axcl.ax_global_type.AX_MOD_INFO_T" title="axcl.ax_global_type.AX_MOD_INFO_T"><code class="xref py py-class docutils literal notranslate"><span class="pre">AX_MOD_INFO_T</span></code></a>]
+}</pre>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="axcl.ax_global_type.AX_MEMORY_SOURCE_E">
+<span class="sig-name descname"><span class="pre">AX_MEMORY_SOURCE_E</span></span><a class="headerlink" href="#axcl.ax_global_type.AX_MEMORY_SOURCE_E" title="Link to this definition">#</a></dt>
+<dd><p>memory source</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">AX_MEMORY_SOURCE_CMM</span>  <span class="o">=</span> <span class="mi">0</span>
+<span class="n">AX_MEMORY_SOURCE_POOL</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">AX_MEMORY_SOURCE_OS</span>   <span class="o">=</span> <span class="mi">2</span>
+<span class="n">AX_MEMORY_SOURCE_BUTT</span> <span class="o">=</span> <span class="mi">3</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="axcl.ax_global_type.AX_MEMORY_ADDR_T">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">AX_MEMORY_ADDR_T</span></span><a class="headerlink" href="#axcl.ax_global_type.AX_MEMORY_ADDR_T" title="Link to this definition">#</a></dt>
+<dd><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">dict_memory_addr</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;phy_addr&quot;</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+    <span class="s2">&quot;vir_addr&quot;</span><span class="p">:</span> <span class="nb">int</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="axcl.ax_global_type.AX_OSD_BMP_ATTR_T">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">AX_OSD_BMP_ATTR_T</span></span><a class="headerlink" href="#axcl.ax_global_type.AX_OSD_BMP_ATTR_T" title="Link to this definition">#</a></dt>
+<dd><pre class="literal-block">dict_osd_bmp_attr = {
+    &quot;alpha&quot;: int,
+    &quot;rgb_format&quot;: <a class="reference internal" href="#axcl.ax_global_type.AX_IMG_FORMAT_E" title="axcl.ax_global_type.AX_IMG_FORMAT_E"><code class="xref py py-class docutils literal notranslate"><span class="pre">AX_IMG_FORMAT_E</span></code></a>,
+    &quot;bitmap_p&quot;: int,
+    &quot;phy_addr&quot;: int,
+    &quot;bmp_width&quot;: int,
+    &quot;bmp_height&quot;: int,
+    &quot;dst_x_offset&quot;: int,
+    &quot;dst_y_offset&quot;: int,
+    &quot;color&quot;: int,
+    &quot;enable_color_inv&quot;: bool,
+    &quot;color_inv&quot;: int,
+    &quot;color_inv_thr&quot;: int
+}</pre>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="axcl.ax_global_type.AX_ERR_CODE_E">
+<span class="sig-name descname"><span class="pre">AX_ERR_CODE_E</span></span><a class="headerlink" href="#axcl.ax_global_type.AX_ERR_CODE_E" title="Link to this definition">#</a></dt>
+<dd><p>error code</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">AX_ERR_INVALID_MODID</span>       <span class="o">=</span> <span class="mh">0x01</span>    <span class="c1"># invalid module id</span>
+<span class="n">AX_ERR_INVALID_DEVID</span>       <span class="o">=</span> <span class="mh">0x02</span>    <span class="c1"># invalid device id</span>
+<span class="n">AX_ERR_INVALID_GRPID</span>       <span class="o">=</span> <span class="mh">0x03</span>    <span class="c1"># invalid group id</span>
+<span class="n">AX_ERR_INVALID_CHNID</span>       <span class="o">=</span> <span class="mh">0x04</span>    <span class="c1"># invalid channel id</span>
+<span class="n">AX_ERR_INVALID_PIPEID</span>      <span class="o">=</span> <span class="mh">0x05</span>    <span class="c1"># invalid pipe id</span>
+<span class="n">AX_ERR_INVALID_STITCHGRPID</span> <span class="o">=</span> <span class="mh">0x06</span>    <span class="c1"># invalid stitch group id</span>
+                                     <span class="c1"># reserved</span>
+<span class="n">AX_ERR_ILLEGAL_PARAM</span>       <span class="o">=</span> <span class="mh">0x0A</span>    <span class="c1"># at lease one input value is out of range</span>
+<span class="n">AX_ERR_NULL_PTR</span>            <span class="o">=</span> <span class="mh">0x0B</span>    <span class="c1"># at lease one input pointer is null</span>
+<span class="n">AX_ERR_BAD_ADDR</span>            <span class="o">=</span> <span class="mh">0x0C</span>    <span class="c1"># at lease one input address is invalid</span>
+                                     <span class="c1"># reserved</span>
+<span class="n">AX_ERR_SYS_NOTREADY</span>        <span class="o">=</span> <span class="mh">0x10</span>    <span class="c1"># a driver is required but not loaded</span>
+<span class="n">AX_ERR_BUSY</span>                <span class="o">=</span> <span class="mh">0x11</span>    <span class="c1"># a resource is busy, probably locked by other users</span>
+<span class="n">AX_ERR_NOT_INIT</span>            <span class="o">=</span> <span class="mh">0x12</span>    <span class="c1"># module is not initialized</span>
+<span class="n">AX_ERR_NOT_CONFIG</span>          <span class="o">=</span> <span class="mh">0x13</span>    <span class="c1"># module is not configured</span>
+<span class="n">AX_ERR_NOT_SUPPORT</span>         <span class="o">=</span> <span class="mh">0x14</span>    <span class="c1"># requested function is not supported on this platform</span>
+<span class="n">AX_ERR_NOT_PERM</span>            <span class="o">=</span> <span class="mh">0x15</span>    <span class="c1"># requested operation is not permitted in this state</span>
+<span class="n">AX_ERR_EXIST</span>               <span class="o">=</span> <span class="mh">0x16</span>    <span class="c1"># target object already exists</span>
+<span class="n">AX_ERR_UNEXIST</span>             <span class="o">=</span> <span class="mh">0x17</span>    <span class="c1"># target object does not exist</span>
+<span class="n">AX_ERR_NOMEM</span>               <span class="o">=</span> <span class="mh">0x18</span>    <span class="c1"># failed to allocate memory from heap</span>
+<span class="n">AX_ERR_NOBUF</span>               <span class="o">=</span> <span class="mh">0x19</span>    <span class="c1"># failed to borrow buffer from pool</span>
+<span class="n">AX_ERR_NOT_MATCH</span>           <span class="o">=</span> <span class="mh">0x1A</span>    <span class="c1"># inconsistent parameter configuration between interfaces</span>
+                                     <span class="c1"># reserved</span>
+<span class="n">AX_ERR_BUF_EMPTY</span>           <span class="o">=</span> <span class="mh">0x20</span>    <span class="c1"># buffer contains no data</span>
+<span class="n">AX_ERR_BUF_FULL</span>            <span class="o">=</span> <span class="mh">0x21</span>    <span class="c1"># buffer contains fresh data</span>
+<span class="n">AX_ERR_QUEUE_EMPTY</span>         <span class="o">=</span> <span class="mh">0x22</span>    <span class="c1"># failed to read as queue is empty</span>
+<span class="n">AX_ERR_QUEUE_FULL</span>          <span class="o">=</span> <span class="mh">0x23</span>    <span class="c1"># failed to write as queue is full</span>
+                                     <span class="c1"># reserved</span>
+<span class="n">AX_ERR_TIMED_OUT</span>           <span class="o">=</span> <span class="mh">0x27</span>    <span class="c1"># operation timeout</span>
+<span class="n">AX_ERR_FLOW_END</span>            <span class="o">=</span> <span class="mh">0x28</span>    <span class="c1"># END signal detected in data stream, processing terminated</span>
+<span class="n">AX_ERR_UNKNOWN</span>             <span class="o">=</span> <span class="mh">0x29</span>    <span class="c1"># unexpected failure, please contact manufacturer support</span>
+                                     <span class="c1"># reserved</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="axcl.ax_global_type.AX_POINT_T">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">AX_POINT_T</span></span><a class="headerlink" href="#axcl.ax_global_type.AX_POINT_T" title="Link to this definition">#</a></dt>
+<dd><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">dict_point</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;x&quot;</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+    <span class="s2">&quot;y&quot;</span><span class="p">:</span> <span class="nb">int</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="axcl.ax_global_type.AX_BGCOLOR_T">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">AX_BGCOLOR_T</span></span><a class="headerlink" href="#axcl.ax_global_type.AX_BGCOLOR_T" title="Link to this definition">#</a></dt>
+<dd><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">dict_bgcolor</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;enable&quot;</span><span class="p">:</span> <span class="nb">bool</span><span class="p">,</span>
+    <span class="s2">&quot;bg_color&quot;</span><span class="p">:</span> <span class="nb">int</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="axcl.ax_global_type.AX_COLORKEY_T">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">AX_COLORKEY_T</span></span><a class="headerlink" href="#axcl.ax_global_type.AX_COLORKEY_T" title="Link to this definition">#</a></dt>
+<dd><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">dict_colorkey</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;enable&quot;</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+    <span class="s2">&quot;inv&quot;</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+    <span class="s2">&quot;key_low&quot;</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+    <span class="s2">&quot;key_high&quot;</span><span class="p">:</span> <span class="nb">int</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="axcl.ax_global_type.AX_BITCOLOR_T">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">AX_BITCOLOR_T</span></span><a class="headerlink" href="#axcl.ax_global_type.AX_BITCOLOR_T" title="Link to this definition">#</a></dt>
+<dd><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">dict_bitcolor</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;color&quot;</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+    <span class="s2">&quot;enable_color_inv&quot;</span><span class="p">:</span> <span class="nb">bool</span><span class="p">,</span>
+    <span class="s2">&quot;color_inv&quot;</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+    <span class="s2">&quot;color_inv_thr&quot;</span><span class="p">:</span> <span class="nb">int</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="axcl.ax_global_type.AX_OVERLAY_T">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">AX_OVERLAY_T</span></span><a class="headerlink" href="#axcl.ax_global_type.AX_OVERLAY_T" title="Link to this definition">#</a></dt>
+<dd><pre class="literal-block">dict_overlay = {
+    &quot;enable&quot;: bool,
+    &quot;width&quot;: int,
+    &quot;height&quot;: int,
+    &quot;stride&quot;: int,
+    &quot;format&quot;: <a class="reference internal" href="#axcl.ax_global_type.AX_IMG_FORMAT_E" title="axcl.ax_global_type.AX_IMG_FORMAT_E"><code class="xref py py-class docutils literal notranslate"><span class="pre">AX_IMG_FORMAT_E</span></code></a>,
+    &quot;phy_addr&quot;: [int],
+    &quot;compress_info&quot;: <a class="reference internal" href="#axcl.ax_global_type.AX_FRAME_COMPRESS_INFO_T" title="axcl.ax_global_type.AX_FRAME_COMPRESS_INFO_T"><code class="xref py py-class docutils literal notranslate"><span class="pre">AX_FRAME_COMPRESS_INFO_T</span></code></a>,
+    &quot;alpha&quot;: int,
+    &quot;offset&quot;: <a class="reference internal" href="#axcl.ax_global_type.AX_POINT_T" title="axcl.ax_global_type.AX_POINT_T"><code class="xref py py-class docutils literal notranslate"><span class="pre">AX_POINT_T</span></code></a>,
+    &quot;color_key&quot;: <a class="reference internal" href="#axcl.ax_global_type.AX_COLORKEY_T" title="axcl.ax_global_type.AX_COLORKEY_T"><code class="xref py py-class docutils literal notranslate"><span class="pre">AX_COLORKEY_T</span></code></a>,
+    &quot;bit_color&quot;: <a class="reference internal" href="#axcl.ax_global_type.AX_BITCOLOR_T" title="axcl.ax_global_type.AX_BITCOLOR_T"><code class="xref py py-class docutils literal notranslate"><span class="pre">AX_BITCOLOR_T</span></code></a>
+}</pre>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="axcl.ax_global_type.AX_PYRA_MODE_E">
+<span class="sig-name descname"><span class="pre">AX_PYRA_MODE_E</span></span><a class="headerlink" href="#axcl.ax_global_type.AX_PYRA_MODE_E" title="Link to this definition">#</a></dt>
+<dd><p>pyra mode</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">AX_PYRA_MODE_GEN</span>  <span class="o">=</span> <span class="mi">0</span>
+<span class="n">AX_PYRA_MODE_RCN</span>  <span class="o">=</span> <span class="mi">1</span>
+<span class="n">AX_PYRA_MODE_BUTT</span> <span class="o">=</span> <span class="mi">2</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="axcl.ax_global_type.AX_PYRA_FRAME_T">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">AX_PYRA_FRAME_T</span></span><a class="headerlink" href="#axcl.ax_global_type.AX_PYRA_FRAME_T" title="Link to this definition">#</a></dt>
+<dd><pre class="literal-block">dict_pyra_frame = {
+    &quot;enable&quot;: bool,
+    &quot;width&quot;: int,
+    &quot;height&quot;: int,
+    &quot;stride&quot;: int,
+    &quot;format&quot;: <a class="reference internal" href="#axcl.ax_global_type.AX_IMG_FORMAT_E" title="axcl.ax_global_type.AX_IMG_FORMAT_E"><code class="xref py py-class docutils literal notranslate"><span class="pre">AX_IMG_FORMAT_E</span></code></a>,
+    &quot;phy_addr&quot;: [int],
+    &quot;compress_info&quot;: <a class="reference internal" href="#axcl.ax_global_type.AX_FRAME_COMPRESS_INFO_T" title="axcl.ax_global_type.AX_FRAME_COMPRESS_INFO_T"><code class="xref py py-class docutils literal notranslate"><span class="pre">AX_FRAME_COMPRESS_INFO_T</span></code></a>,
+    &quot;pixel_format&quot;: int,
+    &quot;enable_crop&quot;: bool,
+    &quot;crop_x_0&quot;: int,
+    &quot;crop_y_0&quot;: int,
+    &quot;crop_width&quot;: int,
+    &quot;crop_height&quot;: int
+}</pre>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="axcl.ax_global_type.AX_GDC_MODE_E">
+<span class="sig-name descname"><span class="pre">AX_GDC_MODE_E</span></span><a class="headerlink" href="#axcl.ax_global_type.AX_GDC_MODE_E" title="Link to this definition">#</a></dt>
+<dd><p>gdc mode</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">AX_GDC_MODE_CORE0</span> <span class="o">=</span> <span class="mi">0</span>    <span class="c1"># core 0</span>
+<span class="n">AX_GDC_MODE_MAX</span>   <span class="o">=</span> <span class="mi">1</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="axcl.ax_global_type.AX_VDSP_MODE_E">
+<span class="sig-name descname"><span class="pre">AX_VDSP_MODE_E</span></span><a class="headerlink" href="#axcl.ax_global_type.AX_VDSP_MODE_E" title="Link to this definition">#</a></dt>
+<dd><p>vdsp mode</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">AX_VDSP_MODE_CORE0</span> <span class="o">=</span> <span class="mi">0</span>    <span class="c1"># core 0</span>
+<span class="n">AX_VDSP_MODE_CORE1</span> <span class="o">=</span> <span class="mi">1</span>    <span class="c1"># core 1</span>
+<span class="n">AX_VDSP_MODE_AUTO</span>  <span class="o">=</span> <span class="mi">2</span>    <span class="c1"># core0/1 balance</span>
+<span class="n">AX_VDSP_MODE_MAX</span>   <span class="o">=</span> <span class="mi">3</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="axcl.ax_global_type.AX_WARP_ENGINE_E">
+<span class="sig-name descname"><span class="pre">AX_WARP_ENGINE_E</span></span><a class="headerlink" href="#axcl.ax_global_type.AX_WARP_ENGINE_E" title="Link to this definition">#</a></dt>
+<dd><p>warp engine</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">AX_WARP_ENGINE_GDC</span>  <span class="o">=</span> <span class="mi">0</span>
+<span class="n">AX_WARP_ENGINE_VDSP</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">AX_WARP_ENGINE_MAX</span>  <span class="o">=</span> <span class="mi">2</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="axcl.ax_global_type.AX_WARP_MODE_U">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">AX_WARP_MODE_U</span></span><a class="headerlink" href="#axcl.ax_global_type.AX_WARP_MODE_U" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+</section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../doc_guide_ffmpeg.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">11. </span>FFmpeg</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="pyAXCL.rt.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">12.1. </span>axcl.rt</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#requirement">12.11. Requirement</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#install">12.12. Install</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-axcl.axcl">12.13. axcl</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.axcl.init"><code class="docutils literal notranslate"><span class="pre">init()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.axcl.finalize"><code class="docutils literal notranslate"><span class="pre">finalize()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.axcl.set_log_level"><code class="docutils literal notranslate"><span class="pre">set_log_level()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.axcl.app_log"><code class="docutils literal notranslate"><span class="pre">app_log()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-axcl.ax_codec_comm">12.14. axcl.ax_codec_comm</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.ax_codec_comm.AX_FRAME_TYPE_E"><code class="docutils literal notranslate"><span class="pre">AX_FRAME_TYPE_E</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-axcl.ax_global_type">12.15. axcl.ax_global_type</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.ax_global_type.AX_FRAME_RATE_CTRL_T"><code class="docutils literal notranslate"><span class="pre">AX_FRAME_RATE_CTRL_T</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.ax_global_type.AX_CHIP_TYPE_E"><code class="docutils literal notranslate"><span class="pre">AX_CHIP_TYPE_E</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.ax_global_type.AX_PAYLOAD_TYPE_E"><code class="docutils literal notranslate"><span class="pre">AX_PAYLOAD_TYPE_E</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.ax_global_type.AX_VSCAN_FORMAT_E"><code class="docutils literal notranslate"><span class="pre">AX_VSCAN_FORMAT_E</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.ax_global_type.AX_COMPRESS_MODE_E"><code class="docutils literal notranslate"><span class="pre">AX_COMPRESS_MODE_E</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.ax_global_type.AX_FRAME_COMPRESS_INFO_T"><code class="docutils literal notranslate"><span class="pre">AX_FRAME_COMPRESS_INFO_T</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.ax_global_type.AX_DYNAMIC_RANGE_E"><code class="docutils literal notranslate"><span class="pre">AX_DYNAMIC_RANGE_E</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.ax_global_type.AX_COLOR_GAMUT_E"><code class="docutils literal notranslate"><span class="pre">AX_COLOR_GAMUT_E</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.ax_global_type.AX_IMG_FORMAT_E"><code class="docutils literal notranslate"><span class="pre">AX_IMG_FORMAT_E</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.ax_global_type.AX_FRAME_FLAG_E"><code class="docutils literal notranslate"><span class="pre">AX_FRAME_FLAG_E</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.ax_global_type.AX_VIDEO_FRAME_T"><code class="docutils literal notranslate"><span class="pre">AX_VIDEO_FRAME_T</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.ax_global_type.AX_MOD_ID_E"><code class="docutils literal notranslate"><span class="pre">AX_MOD_ID_E</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.ax_global_type.AX_LINK_MODE_E"><code class="docutils literal notranslate"><span class="pre">AX_LINK_MODE_E</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.ax_global_type.AX_AUDIO_FRAME_T"><code class="docutils literal notranslate"><span class="pre">AX_AUDIO_FRAME_T</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.ax_global_type.AX_AUDIO_FRAME_INFO_T"><code class="docutils literal notranslate"><span class="pre">AX_AUDIO_FRAME_INFO_T</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.ax_global_type.AX_VIDEO_FRAME_INFO_T"><code class="docutils literal notranslate"><span class="pre">AX_VIDEO_FRAME_INFO_T</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.ax_global_type.AX_SYS_CLK_LEVEL_E"><code class="docutils literal notranslate"><span class="pre">AX_SYS_CLK_LEVEL_E</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.ax_global_type.AX_SYS_CLK_ID_E"><code class="docutils literal notranslate"><span class="pre">AX_SYS_CLK_ID_E</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.ax_global_type.AX_MOD_INFO_T"><code class="docutils literal notranslate"><span class="pre">AX_MOD_INFO_T</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.ax_global_type.AX_LINK_DEST_T"><code class="docutils literal notranslate"><span class="pre">AX_LINK_DEST_T</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.ax_global_type.AX_MEMORY_SOURCE_E"><code class="docutils literal notranslate"><span class="pre">AX_MEMORY_SOURCE_E</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.ax_global_type.AX_MEMORY_ADDR_T"><code class="docutils literal notranslate"><span class="pre">AX_MEMORY_ADDR_T</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.ax_global_type.AX_OSD_BMP_ATTR_T"><code class="docutils literal notranslate"><span class="pre">AX_OSD_BMP_ATTR_T</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.ax_global_type.AX_ERR_CODE_E"><code class="docutils literal notranslate"><span class="pre">AX_ERR_CODE_E</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.ax_global_type.AX_POINT_T"><code class="docutils literal notranslate"><span class="pre">AX_POINT_T</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.ax_global_type.AX_BGCOLOR_T"><code class="docutils literal notranslate"><span class="pre">AX_BGCOLOR_T</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.ax_global_type.AX_COLORKEY_T"><code class="docutils literal notranslate"><span class="pre">AX_COLORKEY_T</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.ax_global_type.AX_BITCOLOR_T"><code class="docutils literal notranslate"><span class="pre">AX_BITCOLOR_T</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.ax_global_type.AX_OVERLAY_T"><code class="docutils literal notranslate"><span class="pre">AX_OVERLAY_T</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.ax_global_type.AX_PYRA_MODE_E"><code class="docutils literal notranslate"><span class="pre">AX_PYRA_MODE_E</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.ax_global_type.AX_PYRA_FRAME_T"><code class="docutils literal notranslate"><span class="pre">AX_PYRA_FRAME_T</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.ax_global_type.AX_GDC_MODE_E"><code class="docutils literal notranslate"><span class="pre">AX_GDC_MODE_E</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.ax_global_type.AX_VDSP_MODE_E"><code class="docutils literal notranslate"><span class="pre">AX_VDSP_MODE_E</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.ax_global_type.AX_WARP_ENGINE_E"><code class="docutils literal notranslate"><span class="pre">AX_WARP_ENGINE_E</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axcl.ax_global_type.AX_WARP_MODE_U"><code class="docutils literal notranslate"><span class="pre">AX_WARP_MODE_U</span></code></a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By kalcohol
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024, AXERA Semiconductor Co., Ltd..
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
