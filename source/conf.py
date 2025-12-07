@@ -30,3 +30,4 @@ language = 'zh_CN'
 # https://sphinx-themes.org/
 html_theme = 'sphinx_rtd_theme'
 html_static_path = ['_static']
+html_baseurl = "https://xinjian-axcl-docs.readthedocs.io/"
