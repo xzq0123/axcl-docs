@@ -4,6 +4,10 @@
  - [123云盘](https://www.123865.com/s/n1lzTd-QeoBh)
  - [百度网盘](https://pan.baidu.com/s/1VCaAKrXWDfZgg-7biILdJg?pwd=axcl)
 
+# 购买链接
+
+ - [淘宝](https://detail.tmall.com/item.htm?id=918628310852)
+
 # 设备简介
 
 ## M.2 算力卡
