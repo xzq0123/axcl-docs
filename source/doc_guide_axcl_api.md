@@ -72,6 +72,22 @@ axclError axclrtGetVersion(int32_t *major, int32_t *minor, int32_t *patch);
 无特别限制。
 
 ---
+(axclrtgetfullversion)=
+#### axclrtGetFullVersion
+
+```c
+axclError const char *axclrtGetFullVersion();
+```
+
+**使用说明**：
+
+查询系统完整版本号，同步接口。
+
+**限制**：
+
+无特别限制。
+
+---
 (axclrtgetsocname)=
 #### axclrtGetSocName
 

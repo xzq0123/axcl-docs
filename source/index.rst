@@ -8,9 +8,14 @@
 
 .. toctree::
    :maxdepth: 2
-   :caption: 目录
+   :caption: 简介
 
-   doc_update_info.md
+   device_introduction.md
+
+.. toctree::
+   :maxdepth: 2
+   :caption: 文档
+
    doc_introduction.md
    doc_guide_setup.md
    doc_guide_axcl_smi.md
@@ -21,12 +26,13 @@
    doc_guide_axcl_api.md
    doc_guide_compile.md
    doc_guide_ffmpeg.md
-   pyAXCL/pyAXCL
    doc_guide_faq.md
    doc_guide_win_setup.md
 
+.. toctree::
+   :maxdepth: 1
+   :caption: 关于
+   :name: Contents
+
    about
 
-Add your content using ``reStructuredText`` syntax. See the
-`reStructuredText <https://www.sphinx-doc.org/en/master/usage/restructuredtext/index.html>`_
-documentation for details.
