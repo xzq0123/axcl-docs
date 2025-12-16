@@ -502,7 +502,12 @@ SDK V3.4.0 以前的版本，请执行`dpkg -r axclhost`卸载
 
 :::
 
+#### 应用展示
 
+树莓派5通过加装一个HAT可以连接两张芯茧算力卡。
+
+![](res/rpi5-x1004.png)
+![](res/rpi5-xinjian.png)
 
 (setup_uos)=
 

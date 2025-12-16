@@ -27,8 +27,7 @@
 
 **资料链接**
 
- - [在线文档](https://xinjian-axcl-docs.readthedocs.io/zh-cn/latest/)
- - [123云盘](https://www.123865.com/s/n1lzTd-QeoBh)
+ - [123云盘](https://www.123865.com/s/n1lzTd-QeoBh) (推介使用)
  - [百度网盘](https://pan.baidu.com/s/1VCaAKrXWDfZgg-7biILdJg?pwd=axcl)
 
 **购买链接**
